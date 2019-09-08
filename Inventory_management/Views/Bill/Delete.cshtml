@@ -1,0 +1,51 @@
+﻿@model Inventory_management.Models.bill
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/payment.cshtml";
+
+}
+
+<h2>Delete Bill Payment</h2>
+
+<h5>Are you sure you want to delete this?</h5>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment_Date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-success" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

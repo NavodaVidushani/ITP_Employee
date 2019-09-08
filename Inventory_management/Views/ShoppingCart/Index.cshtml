@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Inventory_management.Models.storeproduct>
+@using Inventory_management.Models;
+
+@{
+    ViewBag.Title = "Shopping Cart";
+    Layout = "~/Views/Shared/userView/home.cshtml";
+}
+<br />
+<div class="jumbotron-fluid">
+    <h2 style="float:left" class="text-danger">Shopping Cart</h2>
+    <input type="submit" class="btn btn-dark" value="Update Cart" style='float:right;' />
+</div>
+@{
+    if (Session["Cart"] != null)
+    {
+        using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
+        {
+
+            <table class="table table-striped">
+                <tr>
+                <thead>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+                <th> </th>
+                </thead>
+                </tr>
+
+                @foreach (var cart in (List<Cart>)Session["Cart"])
+                {
+                    <tr>
+                        <th>@cart.Storeproduct.product_ID</th>
+                        <th>@cart.Storeproduct.price</th>
+                        <th><input type="text" name="quantity" id="quantity" value="@cart.Quantity" /></th>
+                        &nbsp;
+                        <span id="errmsg"></span>
+                        <th>@(String.Format("{0:N0}", cart.Storeproduct.price * cart.Quantity))</th>
+                        <th>
+
+                            @Html.ActionLink("Remove", "Delete", "ShoppingCart", new { id = cart.Storeproduct.product_ID }, new
+                            {
+                                @class = "btn btn-danger",
+                                @style = "text-decoration:none;color:white;",
+onclick = "return confirm('Are you sure you want to delete this?');"
+                            })
+
+                        </th>
+                    </tr>
+
+                }
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>
+                        @{
+                            List<Cart> temp = (List<Cart>)Session["Cart"];
+                            var total = String.Format("{0:N0}", temp.Sum(x => x.Quantity * x.Storeproduct.price));
+                        }
+                        Rs: @total /=
+                    </td>
+                </tr>
+            </table>
+            <div class="container">
+                <a href="@Url.Action("Index", "Product")" class="btn btn-dark active" role="button" aria-pressed="true" style="float:right">Continue Shopping?</a>
+
+                <a href="@Url.Action("CheckOut", "ShoppingCart")" class="btn btn-primary active" role="button" aria-pressed="true">Check Out</a>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="jumbotron-fluid">
+            <br /><br /><br /><br /><br /><br /><br />
+            <h4> no items in the cart</h4>
+            <br /><br /><br /><br /><br /><br />
+        </div> }
+
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#quantity").keypress(function (e)){
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Enter the digit only").show().fadeOut("slow");
+                return false;
+            }
+        };
+    }):
+</script>

@@ -1,0 +1,44 @@
+﻿@model Inventory_management.Models.attendance_emp
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/adminView/adminEmployee2.cshtml";
+}
+
+
+
+    <div>
+        <h4><b>Attendance Details</b></h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+
+                Employee ID
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.empId)
+            </dd>
+
+            <dt>
+                Status
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.status)
+            </dd>
+
+            <dt>
+                Date
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.date)
+            </dd>
+
+        </dl>
+    </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.empId  }, new { @class = "btn btn-dark", @style = "color:white" })
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary", @style = "color:white" })
+</p>

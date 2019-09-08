@@ -1,0 +1,77 @@
+﻿@model Inventory_management.Models.attendance
+
+
+
+@{
+    ViewBag.Title = "Attendance";
+    Layout = "~/Views/Shared/userView/home.cshtml";
+}
+
+
+
+<div id="atnd_main">
+
+    <h2 id="heaader">Attendance</h2>
+
+    @using (Html.BeginForm("Attendance", "proifle", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.atdno)
+        @Html.HiddenFor(model => model.date_)
+        @Html.HiddenFor(model => model.status_)
+        @Html.HiddenFor(model => model.no_of_days)
+
+        <dl class="dl-horizontal" style="border:1px solid #b6b6b6; margin-top:10px; border-radius:5px; background:#f1f1f1; padding-top:15px;">
+            <dt style="margin-left:10px;">
+                <label>Registration ID</label>
+            </dt>
+            <dd style="color:#232424;">
+                @Html.DisplayFor(model => model.user_)
+            </dd>
+
+            <dt style="margin-left:10px;">
+                <label>Username</label>
+            </dt>
+            <dd>
+                @Session["username"]
+            </dd>
+
+            <p style="width:100%; background-color:#232424"></p>
+
+            <div class="prgres">
+                <label>Progress of month</label>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="@Session["progress"]%" aria-valuemin="0" aria-valuemax="100" style="width:@Session["progress"]%"></div>
+                      <p style="margin:15px;">@Session["progress"]%</p>
+                </div>
+            </div>
+
+        </dl>
+          
+        <div style="margin-right:10px;">
+            <button class="btn_mark btn-profile" type="submit">Mark Your Attendance</button>   
+        </div>
+            
+    }
+
+
+    <div class="outerblock">
+
+        <label class="lbl_cdays">Completed Days: </label>
+        <div class="innerblock1">
+            <h3 class="days">@Model.no_of_days</h3>
+        </div>
+        <br />
+        <label class="lbl_rdays">Remaining Days: </label>
+        <div class="innerblock2">
+            <h3 class="days">@Session["rDays"]</h3>
+        </div>
+
+    </div>
+
+
+    <p>
+        @Html.ActionLink("Back To Profile", "Details", new { id = Model.user_ }, new { @class = "btn-profile" })
+
+    </p>
+
+</div>

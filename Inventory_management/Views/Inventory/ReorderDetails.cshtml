@@ -1,0 +1,89 @@
+﻿@model Inventory_management.Models.inventory
+
+@{
+    ViewBag.Title = "ReorderDetails";
+    Layout = "~/Views/Shared/adminView/admin.cshtml";
+}
+    <center>
+        <br />
+        <h2 class="text-danger">Reorder Details<h2>
+    </center>
+
+<div>
+    <h4>inventory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.itemCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.itemCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.purchased_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purchased_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.supplier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supplier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catergory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catergory)
+        </dd>
+
+    </dl>
+</div>
+
+<button>Place Order</button>
+
+
+<p>
+    |@Html.ActionLink("Place Order", "Index", "Email")
+    @Html.ActionLink("Back to List", "Reorder")
+</p>

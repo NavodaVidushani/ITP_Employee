@@ -1,0 +1,984 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="inventorymgtModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="atdno" />
+          </Key>
+          <Property Name="atdno" Type="int" Nullable="false" />
+          <Property Name="date_" Type="text" />
+          <Property Name="status_" Type="text" />
+          <Property Name="user_" Type="int" />
+          <Property Name="no_of_days" Type="int" />
+        </EntityType>
+        <EntityType Name="attendance_emp">
+          <Key>
+            <PropertyRef Name="empId" />
+          </Key>
+          <Property Name="empId" Type="int" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="45" />
+          <Property Name="date" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="bill">
+          <Key>
+            <PropertyRef Name="billId" />
+          </Key>
+          <Property Name="billId" Type="int" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="double" />
+          <Property Name="Payment Date" Type="date" />
+        </EntityType>
+        <EntityType Name="daily">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="text" />
+          <Property Name="category" Type="text" />
+          <Property Name="savings" Type="double" />
+          <Property Name="amount" Type="double" />
+        </EntityType>
+        <EntityType Name="diet_planing">
+          <Key>
+            <PropertyRef Name="dietID" />
+          </Key>
+          <Property Name="dietID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="pdf" Type="varchar" MaxLength="100" />
+          <Property Name="bmi" Type="float" />
+          <Property Name="age_range" Type="varchar" MaxLength="50" />
+          <Property Name="category" Type="varchar" MaxLength="45" />
+          <Property Name="food_type" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="empId" />
+          </Key>
+          <Property Name="empId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="username" Type="varchar" MaxLength="45" />
+          <Property Name="password" Type="varchar" MaxLength="45" />
+          <Property Name="gender" Type="varchar" MaxLength="45" />
+          <Property Name="contact" Type="varchar" MaxLength="45" />
+          <Property Name="address" Type="varchar" MaxLength="45" />
+          <Property Name="specialisation" Type="varchar" MaxLength="45" />
+          <Property Name="shift" Type="varchar" MaxLength="45" />
+          <Property Name="bday" Type="varchar" MaxLength="45" />
+          <Property Name="nic" Type="varchar" MaxLength="45" />
+          <Property Name="email" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="income">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="date" Type="text" />
+          <Property Name="category" Type="text" />
+          <Property Name="cash" Type="double" />
+          <Property Name="pos" Type="double" />
+          <Property Name="amount" Type="double" />
+        </EntityType>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="itemCode" />
+          </Key>
+          <Property Name="itemCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="45" />
+          <Property Name="image" Type="varchar" MaxLength="255" />
+          <Property Name="purchased_date" Type="date" />
+          <Property Name="supplier" Type="int" Nullable="false" />
+          <Property Name="catergory" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="inventory_pay">
+          <Key>
+            <PropertyRef Name="paymentId" />
+          </Key>
+          <Property Name="paymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="ItemCode" Type="varchar" MaxLength="100" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="PayementDate" Type="date" />
+          <Property Name="Month" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="leave">
+          <Key>
+            <PropertyRef Name="empId" />
+          </Key>
+          <Property Name="empId" Type="int" Nullable="false" />
+          <Property Name="reason" Type="varchar" MaxLength="45" />
+          <Property Name="fromdate" Type="varchar" MaxLength="45" />
+          <Property Name="todate" Type="varchar" MaxLength="45" />
+          <Property Name="noofdays" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="username" Type="text" />
+          <Property Name="password_" Type="text" />
+          <Property Name="status_" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="varchar" MaxLength="50" />
+          <Property Name="MemberShip" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="double" />
+          <Property Name="MemberShipValidateDate" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderDate" Type="datetime" Precision="0" />
+          <Property Name="paymentType" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+          <Property Name="customerName" Type="varchar" MaxLength="50" />
+          <Property Name="customerPhone" Type="varchar" MaxLength="50" />
+          <Property Name="customerEmail" Type="varchar" MaxLength="100" />
+          <Property Name="customerAddress" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="orderID" />
+            <PropertyRef Name="product_ID" />
+          </Key>
+          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="product_ID" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <EntityType Name="schedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="10" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+          <Property Name="Level" Type="varchar" MaxLength="45" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="Days" Type="int" />
+          <Property Name="Image" Type="varchar" MaxLength="200" />
+          <Property Name="Morning_Trainer" Type="varchar" MaxLength="45" />
+          <Property Name="Evening_Trainer" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="storeproduct">
+          <Key>
+            <PropertyRef Name="product_ID" />
+          </Key>
+          <Property Name="product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemCode" Type="int" Nullable="false" />
+          <Property Name="titleID" Type="int" Nullable="false" />
+          <Property Name="product_name" Type="varchar" MaxLength="25" />
+          <Property Name="image" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="1000" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <EntityType Name="supplier">
+          <Key>
+            <PropertyRef Name="supplierID" />
+          </Key>
+          <Property Name="supplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="100" />
+          <Property Name="phone_number" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="title">
+          <Key>
+            <PropertyRef Name="titleID" />
+          </Key>
+          <Property Name="titleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titlename" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="trainer">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainerID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="paymentDate" Type="date" />
+          <Property Name="Month" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="regId" />
+          </Key>
+          <Property Name="regId" Type="int" Nullable="false" />
+          <Property Name="fname" Type="text" />
+          <Property Name="lname" Type="text" />
+          <Property Name="email" Type="text" />
+          <Property Name="password_" Type="varchar" MaxLength="255" />
+          <Property Name="age" Type="int" />
+          <Property Name="ocp" Type="text" />
+          <Property Name="weight_" Type="int" />
+          <Property Name="height" Type="double" />
+          <Property Name="phone" Type="text" />
+          <Property Name="address" Type="text" />
+          <Property Name="shedule" Type="text" />
+          <Property Name="d_plan" Type="text" />
+          <Property Name="pay_type" Type="text" />
+          <Property Name="gender" Type="text" />
+          <Property Name="img_path" Type="text" />
+        </EntityType>
+        <Association Name="fk_ItemCode">
+          <End Role="inventory" Type="Self.inventory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="storeproduct" Type="Self.storeproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventory">
+              <PropertyRef Name="itemCode" />
+            </Principal>
+            <Dependent Role="storeproduct">
+              <PropertyRef Name="itemCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ord">
+          <End Role="order" Type="Self.order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pdt">
+          <End Role="storeproduct" Type="Self.storeproduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storeproduct">
+              <PropertyRef Name="product_ID" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Title">
+          <End Role="title" Type="Self.title" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="storeproduct" Type="Self.storeproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="title">
+              <PropertyRef Name="titleID" />
+            </Principal>
+            <Dependent Role="storeproduct">
+              <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sup_ID">
+          <End Role="supplier" Type="Self.supplier" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplier">
+              <PropertyRef Name="supplierID" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="inventorymgtModelStoreContainer">
+          <EntitySet Name="attendance" EntityType="Self.attendance" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="attendance_emp" EntityType="Self.attendance_emp" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="bill" EntityType="Self.bill" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="daily" EntityType="Self.daily" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="diet_planing" EntityType="Self.diet_planing" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="income" EntityType="Self.income" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="inventory" EntityType="Self.inventory" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="inventory_pay" EntityType="Self.inventory_pay" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="leave" EntityType="Self.leave" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="login" EntityType="Self.login" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="member" EntityType="Self.member" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="orderdetail" EntityType="Self.orderdetail" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="schedule" EntityType="Self.schedule" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="storeproduct" EntityType="Self.storeproduct" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="supplier" EntityType="Self.supplier" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="title" EntityType="Self.title" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="trainer" EntityType="Self.trainer" Schema="inventorymgt" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="inventorymgt" store:Type="Tables" />
+          <AssociationSet Name="fk_ItemCode" Association="Self.fk_ItemCode">
+            <End Role="inventory" EntitySet="inventory" />
+            <End Role="storeproduct" EntitySet="storeproduct" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ord" Association="Self.fk_ord">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pdt" Association="Self.fk_pdt">
+            <End Role="storeproduct" EntitySet="storeproduct" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Title" Association="Self.fk_Title">
+            <End Role="title" EntitySet="title" />
+            <End Role="storeproduct" EntitySet="storeproduct" />
+          </AssociationSet>
+          <AssociationSet Name="sup_ID" Association="Self.sup_ID">
+            <End Role="supplier" EntitySet="supplier" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="inventorymgtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="itemCode" />
+          </Key>
+          <Property Name="itemCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="purchased_date" Type="DateTime" />
+          <Property Name="supplier" Type="Int32" Nullable="false" />
+          <Property Name="catergory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="supplier1" Relationship="Self.sup_ID" FromRole="inventory" ToRole="supplier" />
+          <NavigationProperty Name="storeproducts" Relationship="inventorymgtModel.fk_ItemCode" FromRole="inventory" ToRole="storeproduct" />
+        </EntityType>
+        <EntityType Name="supplier">
+          <Key>
+            <PropertyRef Name="supplierID" />
+          </Key>
+          <Property Name="supplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="phone_number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="inventories" Relationship="Self.sup_ID" FromRole="supplier" ToRole="inventory" />
+        </EntityType>
+        <Association Name="sup_ID">
+          <End Role="supplier" Type="Self.supplier" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplier">
+              <PropertyRef Name="supplierID" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="supplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="inventorymgtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="inventories" EntityType="Self.inventory" />
+          <EntitySet Name="suppliers" EntityType="Self.supplier" />
+          <AssociationSet Name="sup_ID" Association="Self.sup_ID">
+            <End Role="supplier" EntitySet="suppliers" />
+            <End Role="inventory" EntitySet="inventories" />
+          </AssociationSet>
+          <EntitySet Name="logins" EntityType="inventorymgtModel.login" />
+          <EntitySet Name="users" EntityType="inventorymgtModel.user" />
+          <EntitySet Name="attendances" EntityType="inventorymgtModel.attendance" />
+          <EntitySet Name="dailies" EntityType="inventorymgtModel.daily" />
+          <EntitySet Name="incomes" EntityType="inventorymgtModel.income" />
+          <EntitySet Name="orders" EntityType="inventorymgtModel.order" />
+          <EntitySet Name="orderdetails" EntityType="inventorymgtModel.orderdetail" />
+          <EntitySet Name="storeproducts" EntityType="inventorymgtModel.storeproduct" />
+          <EntitySet Name="titles" EntityType="inventorymgtModel.title" />
+          <AssociationSet Name="fk_ItemCode" Association="inventorymgtModel.fk_ItemCode">
+            <End Role="inventory" EntitySet="inventories" />
+            <End Role="storeproduct" EntitySet="storeproducts" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ord" Association="inventorymgtModel.fk_ord">
+            <End Role="order" EntitySet="orders" />
+            <End Role="orderdetail" EntitySet="orderdetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pdt" Association="inventorymgtModel.fk_pdt">
+            <End Role="storeproduct" EntitySet="storeproducts" />
+            <End Role="orderdetail" EntitySet="orderdetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Title" Association="inventorymgtModel.fk_Title">
+            <End Role="title" EntitySet="titles" />
+            <End Role="storeproduct" EntitySet="storeproducts" />
+          </AssociationSet>
+          <EntitySet Name="attendance_emp" EntityType="inventorymgtModel.attendance_emp" />
+          <EntitySet Name="employees" EntityType="inventorymgtModel.employee" />
+          <EntitySet Name="leaves" EntityType="inventorymgtModel.leave" />
+          <EntitySet Name="bills" EntityType="inventorymgtModel.bill" />
+          <EntitySet Name="inventory_pay" EntityType="inventorymgtModel.inventory_pay" />
+          <EntitySet Name="members" EntityType="inventorymgtModel.member" />
+          <EntitySet Name="trainers" EntityType="inventorymgtModel.trainer" />
+          <EntitySet Name="schedules" EntityType="inventorymgtModel.schedule" />
+          <EntitySet Name="diet_planing" EntityType="inventorymgtModel.diet_planing" />
+        </EntityContainer>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="password_" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="status_" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="regId" />
+          </Key>
+          <Property Name="regId" Type="Int32" Nullable="false" />
+          <Property Name="fname" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="password_" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="age" Type="Int32" />
+          <Property Name="ocp" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="weight_" Type="Int32" />
+          <Property Name="height" Type="Double" />
+          <Property Name="phone" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="shedule" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="d_plan" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="pay_type" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="img_path" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="attendance">
+          <Key>
+            <PropertyRef Name="atdno" />
+          </Key>
+          <Property Name="atdno" Type="Int32" Nullable="false" />
+          <Property Name="date_" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="status_" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="user_" Type="Int32" />
+          <Property Name="no_of_days" Type="Int32" />
+        </EntityType>
+        <EntityType Name="daily">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="savings" Type="Double" />
+          <Property Name="amount" Type="Double" />
+        </EntityType>
+        <EntityType Name="income">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="cash" Type="Double" />
+          <Property Name="pos" Type="Double" />
+          <Property Name="amount" Type="Double" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderDate" Type="DateTime" />
+          <Property Name="paymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="customerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="customerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="customerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="customerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="orderdetails" Relationship="inventorymgtModel.fk_ord" FromRole="order" ToRole="orderdetail" />
+        </EntityType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="orderID" />
+            <PropertyRef Name="product_ID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="product_ID" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="price" Type="Single" />
+          <NavigationProperty Name="order" Relationship="inventorymgtModel.fk_ord" FromRole="orderdetail" ToRole="order" />
+          <NavigationProperty Name="storeproduct" Relationship="inventorymgtModel.fk_pdt" FromRole="orderdetail" ToRole="storeproduct" />
+        </EntityType>
+        <EntityType Name="storeproduct">
+          <Key>
+            <PropertyRef Name="product_ID" />
+          </Key>
+          <Property Name="product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemCode" Type="Int32" Nullable="false" />
+          <Property Name="titleID" Type="Int32" Nullable="false" />
+          <Property Name="product_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="price" Type="Single" />
+          <NavigationProperty Name="inventory" Relationship="inventorymgtModel.fk_ItemCode" FromRole="storeproduct" ToRole="inventory" />
+          <NavigationProperty Name="orderdetails" Relationship="inventorymgtModel.fk_pdt" FromRole="storeproduct" ToRole="orderdetail" />
+          <NavigationProperty Name="title" Relationship="inventorymgtModel.fk_Title" FromRole="storeproduct" ToRole="title" />
+        </EntityType>
+        <EntityType Name="title">
+          <Key>
+            <PropertyRef Name="titleID" />
+          </Key>
+          <Property Name="titleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titlename" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="storeproducts" Relationship="inventorymgtModel.fk_Title" FromRole="title" ToRole="storeproduct" />
+        </EntityType>
+        <Association Name="fk_ItemCode">
+          <End Type="inventorymgtModel.inventory" Role="inventory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="inventorymgtModel.storeproduct" Role="storeproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventory">
+              <PropertyRef Name="itemCode" />
+            </Principal>
+            <Dependent Role="storeproduct">
+              <PropertyRef Name="itemCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ord">
+          <End Type="inventorymgtModel.order" Role="order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="inventorymgtModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pdt">
+          <End Type="inventorymgtModel.storeproduct" Role="storeproduct" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="inventorymgtModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="storeproduct">
+              <PropertyRef Name="product_ID" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Title">
+          <End Type="inventorymgtModel.title" Role="title" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="inventorymgtModel.storeproduct" Role="storeproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="title">
+              <PropertyRef Name="titleID" />
+            </Principal>
+            <Dependent Role="storeproduct">
+              <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="attendance_emp">
+          <Key>
+            <PropertyRef Name="empId" />
+          </Key>
+          <Property Name="empId" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="empId" />
+          </Key>
+          <Property Name="empId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="specialisation" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="shift" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="bday" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nic" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="leave">
+          <Key>
+            <PropertyRef Name="empId" />
+          </Key>
+          <Property Name="empId" Type="Int32" Nullable="false" />
+          <Property Name="reason" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="fromdate" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="todate" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="noofdays" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bill">
+          <Key>
+            <PropertyRef Name="billId" />
+          </Key>
+          <Property Name="billId" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Payment_Date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="inventory_pay">
+          <Key>
+            <PropertyRef Name="paymentId" />
+          </Key>
+          <Property Name="paymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" />
+          <Property Name="PayementDate" Type="DateTime" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MemberShip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="MemberShipValidateDate" Type="DateTime" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="trainer">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrainerID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" />
+          <Property Name="paymentDate" Type="DateTime" />
+          <Property Name="Month" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="schedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Days" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Morning_Trainer" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Evening_Trainer" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="diet_planing">
+          <Key>
+            <PropertyRef Name="dietID" />
+          </Key>
+          <Property Name="dietID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="pdf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="bmi" Type="Single" />
+          <Property Name="age_range" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="food_type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="inventorymgtModelStoreContainer" CdmEntityContainer="inventorymgtEntities">
+          <EntitySetMapping Name="inventories">
+            <EntityTypeMapping TypeName="inventorymgtModel.inventory">
+              <MappingFragment StoreEntitySet="inventory">
+                <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="purchased_date" ColumnName="purchased_date" />
+                <ScalarProperty Name="supplier" ColumnName="supplier" />
+                <ScalarProperty Name="catergory" ColumnName="catergory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suppliers">
+            <EntityTypeMapping TypeName="inventorymgtModel.supplier">
+              <MappingFragment StoreEntitySet="supplier">
+                <ScalarProperty Name="supplierID" ColumnName="supplierID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="logins">
+            <EntityTypeMapping TypeName="inventorymgtModel.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="status_" ColumnName="status_" />
+                <ScalarProperty Name="password_" ColumnName="password_" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="inventorymgtModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="img_path" ColumnName="img_path" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="pay_type" ColumnName="pay_type" />
+                <ScalarProperty Name="d_plan" ColumnName="d_plan" />
+                <ScalarProperty Name="shedule" ColumnName="shedule" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="weight_" ColumnName="weight_" />
+                <ScalarProperty Name="ocp" ColumnName="ocp" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="password_" ColumnName="password_" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="regId" ColumnName="regId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="attendances">
+            <EntityTypeMapping TypeName="inventorymgtModel.attendance">
+              <MappingFragment StoreEntitySet="attendance">
+                <ScalarProperty Name="no_of_days" ColumnName="no_of_days" />
+                <ScalarProperty Name="user_" ColumnName="user_" />
+                <ScalarProperty Name="status_" ColumnName="status_" />
+                <ScalarProperty Name="date_" ColumnName="date_" />
+                <ScalarProperty Name="atdno" ColumnName="atdno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dailies">
+            <EntityTypeMapping TypeName="inventorymgtModel.daily">
+              <MappingFragment StoreEntitySet="daily">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="savings" ColumnName="savings" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="incomes">
+            <EntityTypeMapping TypeName="inventorymgtModel.income">
+              <MappingFragment StoreEntitySet="income">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="pos" ColumnName="pos" />
+                <ScalarProperty Name="cash" ColumnName="cash" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="inventorymgtModel.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+                <ScalarProperty Name="customerEmail" ColumnName="customerEmail" />
+                <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderdetails">
+            <EntityTypeMapping TypeName="inventorymgtModel.orderdetail">
+              <MappingFragment StoreEntitySet="orderdetail">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="product_ID" ColumnName="product_ID" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storeproducts">
+            <EntityTypeMapping TypeName="inventorymgtModel.storeproduct">
+              <MappingFragment StoreEntitySet="storeproduct">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="titleID" ColumnName="titleID" />
+                <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+                <ScalarProperty Name="product_ID" ColumnName="product_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="titles">
+            <EntityTypeMapping TypeName="inventorymgtModel.title">
+              <MappingFragment StoreEntitySet="title">
+                <ScalarProperty Name="titlename" ColumnName="titlename" />
+                <ScalarProperty Name="titleID" ColumnName="titleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="attendance_emp">
+            <EntityTypeMapping TypeName="inventorymgtModel.attendance_emp">
+              <MappingFragment StoreEntitySet="attendance_emp">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="empId" ColumnName="empId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="inventorymgtModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nic" ColumnName="nic" />
+                <ScalarProperty Name="bday" ColumnName="bday" />
+                <ScalarProperty Name="shift" ColumnName="shift" />
+                <ScalarProperty Name="specialisation" ColumnName="specialisation" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="empId" ColumnName="empId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="leaves">
+            <EntityTypeMapping TypeName="inventorymgtModel.leave">
+              <MappingFragment StoreEntitySet="leave">
+                <ScalarProperty Name="noofdays" ColumnName="noofdays" />
+                <ScalarProperty Name="todate" ColumnName="todate" />
+                <ScalarProperty Name="fromdate" ColumnName="fromdate" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="empId" ColumnName="empId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bills">
+            <EntityTypeMapping TypeName="inventorymgtModel.bill">
+              <MappingFragment StoreEntitySet="bill">
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="billId" ColumnName="billId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventory_pay">
+            <EntityTypeMapping TypeName="inventorymgtModel.inventory_pay">
+              <MappingFragment StoreEntitySet="inventory_pay">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="PayementDate" ColumnName="PayementDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="paymentId" ColumnName="paymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="members">
+            <EntityTypeMapping TypeName="inventorymgtModel.member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MemberShipValidateDate" ColumnName="MemberShipValidateDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MemberShip" ColumnName="MemberShip" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trainers">
+            <EntityTypeMapping TypeName="inventorymgtModel.trainer">
+              <MappingFragment StoreEntitySet="trainer">
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="schedules">
+            <EntityTypeMapping TypeName="inventorymgtModel.schedule">
+              <MappingFragment StoreEntitySet="schedule">
+                <ScalarProperty Name="Evening_Trainer" ColumnName="Evening_Trainer" />
+                <ScalarProperty Name="Morning_Trainer" ColumnName="Morning_Trainer" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="diet_planing">
+            <EntityTypeMapping TypeName="inventorymgtModel.diet_planing">
+              <MappingFragment StoreEntitySet="diet_planing">
+                <ScalarProperty Name="food_type" ColumnName="food_type" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="age_range" ColumnName="age_range" />
+                <ScalarProperty Name="bmi" ColumnName="bmi" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="dietID" ColumnName="dietID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

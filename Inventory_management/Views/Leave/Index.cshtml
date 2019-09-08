@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Inventory_management.Models.leave>
+
+@{
+    ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/adminView/adminEmployee3.cshtml";
+     
+}
+
+    <h4><center><b>Leave Management</b></center></h4>
+
+
+    <div>
+        <div class="col-4" style="float:right">
+            <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
+        </div>
+
+
+        <a href="@Url.Action("Create")" class="btn btn-success">Create New </a>
+        <br /><br />
+        <table class="table">
+            <tr class="Search">
+                <th>
+                    Employee ID
+                </th>
+                <th>
+                    Reason
+                </th>
+                <th>
+                    From Date
+                </th>
+                <th>
+                    To Date
+                </th>
+                <th>
+                    No of Days
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.empId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fromdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.todate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.noofdays)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.empId }, new { @class = "btn btn-success", @style = "color:white" })
+                        @Html.ActionLink("Details", "Details", new { id = item.empId }, new { @class = "btn btn-dark", @style = "color:white" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.empId }, new { @class = "btn btn-danger", @style = "color:white" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+                function Contains(text_one, text_two) {
+                    if (text_one.indexOf(text_two) != -1)
+                        return true;
+                }
+
+                $("#Search").keyup(function () {
+
+                    var searchText = $("#Search").val().toLocaleLowerCase();
+                    $(".Search").each(function () {
+
+                        if (!Contains($(this).text().toLowerCase(), searchText)) {
+
+                            $(this).hide();
+                        }
+                        else {
+                            $(this).show();
+                        }
+
+                    })
+                });
+
+            });
+
+
+        </script>

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Inventory_management.Models.supplier>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/adminSupplier.cshtml";
+}
+
+<center>
+    <br />
+    <h2 class="text-danger">Suppliers</h2>
+</center>
+<br/><br/>
+<div class="col-4" style="float:right">
+    <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
+</div>
+<br>
+@Html.ActionLink("Add Supplier", "Create", null, new { @class = "btn btn-success", @style = "color:white" })
+<br/><br/>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone_number)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.supplierID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.supplierID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.supplierID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+
+
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+
+                    $(this).show();
+                }
+            });
+
+        });
+
+    });
+
+</script>

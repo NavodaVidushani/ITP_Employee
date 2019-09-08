@@ -1,0 +1,111 @@
+﻿ @model IEnumerable<Inventory_management.Models.diet_planing>
+
+@{
+    ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/adminView/diet.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="container-fluid ">
+
+    <div class="form-group ">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></span>
+            <p>
+                <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
+            </p>
+        </div>
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr class="Search">
+            <th>
+                @Html.DisplayNameFor(model => model.dietID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pdf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bmi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age_range)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.food_type)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="Search">
+                <td>
+                    @Html.DisplayFor(modelItem => item.dietID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pdf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bmi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age_range)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.food_type)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.dietID }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.dietID }, new { @class = "btn btn-dark" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.dietID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+    $(document).ready(function () {
+
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+
+
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+
+                    $(this).show();
+                }
+            });
+
+        });
+
+    });
+
+    </script>

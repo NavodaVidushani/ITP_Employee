@@ -1,0 +1,93 @@
+﻿
+@model Inventory_management.Models.login
+
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/userView/login.cshtml";
+
+}
+<div class="container-fluid">
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-form-title" style="background-image: url(images/bg-02.jpg);">
+                    <span class="login100-form-title-1">
+
+                    </span>
+                </div>
+                <div class="col-4">
+                    <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+                    <form class="login100-form validate-form" action="Verify" method="post">
+
+                        <div class="wrap-input100 validate-input m-b-26">
+                            <span class="label-input100">Username</span>
+                            <input class="input100" placeholder="Email address" type="text" name="username" style="background-image: url(../images/icons/user2.png); background-color:#ffffff; background-repeat:no-repeat ; background-size: 30px; padding-left: 40px" placeholder="Enter username">
+                            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-18">
+                            <span class="label-input100">Password</span>
+                            <input class="input100" placeholder="Password" type="password" name="password_" style="background-image: url(../images/icons/pass2.png); background-repeat:no-repeat ; background-color:#ffffff;  background-size: 30px; padding-left: 40px" placeholder="Enter password">
+
+                            @Html.ValidationMessageFor(model => model.password_, "", new { @class = "text-danger" })
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="flex-sb-m w-full p-b-30">
+
+                            <div>
+                                <a href="#" class="txt1">
+                                    Forgot Password?
+                                </a>
+                            </div>
+
+                            <div>
+                                <a class="txt1">@Html.ActionLink("Create an Account", "../User/addOrEdit")</a>
+                            </div>
+
+                        </div>
+                        <button class="btn login100-form-btn btn-primary btn-block" type="submit">Login</button>
+
+
+
+
+                        <div class="login-status">
+                            @Html.DisplayFor(model => model.status_)
+                        </div>
+
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    input[type=text]:hover {
+        border: none;
+    }
+</style>
+
+<!--===============================================================================================-->
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="js/main.js"></script>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

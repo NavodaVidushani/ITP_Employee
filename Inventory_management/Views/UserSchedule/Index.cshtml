@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Inventory_management.Models.schedule>
+
+@{
+    ViewBag.Title = "User Registration";
+    Layout = "~/Views/Shared/userView/home.cshtml";
+}
+
+<div class="container-fluid">
+    <h2 class="text-danger">Schedules</h2>
+
+    <div class="form-group ">
+        <div class="input-group">
+            <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" style="float:right" />
+        </div>
+    </div>
+
+
+    <div class="row align-items-start Search">
+
+        @foreach (var item in Model)
+        {
+
+            <div class='col-md-3 Search'>
+                <div class="card border-dark">
+                    <div class='card-header bg-secondary'>
+                        <h5 class="card-title text-center">@item.Category</h5>
+                    </div>
+
+                    <div class='card-body align-self-center'>
+                        <img alt="image not found" style="width:310px;height:240px;" src="@Url.Content(item.Image)">
+                    </div>
+                    <div class="card-header">
+                        <h5 class="text-danger">@item.Name</h5>
+                        <h6 class="text-danger">Level : @item.Level</h6>
+                        <h6 class="text-danger">Gender : @item.Gender</h6>
+                    </div>
+
+                    <div class='card-header bg-secondary'>
+                        <h5 class="card-title ">
+                            @Html.ActionLink("Details", "Details", "UserSchedule", new { id = item.ID }, new { @class = "btn btn-dark", @style = "text-decoration:none;color:white;" })
+
+                        </h5>
+                        <h5 class="card-title "> @Html.ActionLink("Select as Current Schedule", "Message", "UserSchedule", new { id = item.ID }, new { @class = "btn btn-success", @style = "text-decoration:none;color:white;" })</h5>
+                    </div>
+
+                </div>
+                <br>
+            </div>
+
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+
+
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+
+                    $(this).show();
+                }
+            });
+
+        });
+
+    });</script>

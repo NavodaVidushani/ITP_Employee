@@ -1,0 +1,44 @@
+﻿@model Inventory_management.Models.bill
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/payment.cshtml";
+
+}
+
+<h2>Bill Payment Details</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment_Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.billId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

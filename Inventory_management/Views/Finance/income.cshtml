@@ -1,0 +1,555 @@
+﻿@{
+    Layout = "~/Views/Shared/adminView/finance2.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta charset="utf-8" />
+<title>Finance Income</title>
+
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+<!-- CSS Files -->
+<link href="@Url.Content("~/Content/assets/css/bootstrap.min.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/assets/css/light-bootstrap-dashboard.css?v=2.0.0")" rel="stylesheet" />
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link href="@Url.Content("~/Content/assets/css/demo.css")" rel="stylesheet" />
+
+<!--   Core JS Files   -->
+<script src="@Url.Content("~/Content/assets/js/core/jquery.3.2.1.min.js")"></script>
+<script src="@Url.Content("~/Content/assets/js/core/popper.min.js")"></script>
+<script src="@Url.Content("~/Content/assets/js/core/bootstrap.min.js")"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="@Url.Content("~/Content/assets/js/plugins/bootstrap-switch.js")"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!--  Chartist Plugin  -->
+<script src="@Url.Content("~/Content/assets/js/plugins/chartist.min.js")"></script>
+<!--  Notifications Plugin    -->
+<script src="@Url.Content("~/Content/assets/js/plugins/bootstrap-notify.js")"></script>
+<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+<script src="@Url.Content("~/Content/assets/js/light-bootstrap-dashboard.js?v=2.0.0")"></script>
+<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+<script src="@Url.Content("~/Content/assets/js/demo.js")"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="@Url.Content("~/Content/assets/js/jquery.validate.js")"></script>
+
+<script src="@Url.Content("~/Content/assets/js/sweetalert.min.js")"></script>
+
+<link rel="stylesheet" type="text/css" )" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+<script charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<style>
+    .elementz {
+        border: none;
+        background-image: none;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        outline: none;
+        -webkit-appearance: none;
+        color: #000;
+    }
+
+    .buttonHide {
+        display: none;
+    }
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      margin-left: 95%;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+</style>
+
+</head>
+
+<body>
+    @*<div class="wrapper">
+        <div class="sidebar" data-image="@Url.Content("~/Content/assets/img/sidebar-5.jpg")">
+
+            <div class="sidebar-wrapper" style="background-color: rgba(252, 3, 3 , 0.4)">
+                <div class="logo">
+                    <a href="#" class="simple-text">
+                        Logo
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">
+                            <i class="nc-icon nc-circle-09"></i>
+                            <p>User Profile</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./user.html">
+                            <i class="nc-icon nc-badge"></i>
+                            <p>Employee Managment</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./table.html">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Schedule Managment</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./typography.html">
+                            <i class="nc-icon nc-satisfied"></i>
+                            <p>Diet Plan Managment</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./icons.html">
+                            <i class="nc-icon nc-cart-simple"></i>
+                            <p>Store</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./maps.html">
+                            <i class="nc-icon nc-money-coins"></i>
+                            <p>Payment Managment</p>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./notifications.html">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>Finance Managment</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="./notifications.html">
+                            <i class="nc-icon nc-delivery-fast"></i>
+                            <p>Inventory Managment</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>*@
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#pablo">Finance Managment</a>
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <span class="d-lg-none">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="income" class="nav-link" style="color: rgba(252, 3, 3 , 0.7)">
+                                    <span class="d-lg-block">Income Details</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="daily" class="nav-link">
+                                    <span class="d-lg-block">Daily Expenses</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <span class="d-lg-block">Statement</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#pablo">
+                                    <span class="no-icon">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card ">
+                                <div class="card-body ">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <form id="incomeForm">
+                                                <div class="form-group">
+                                                    <label for="date">Date</label>
+                                                    <input type="date" class="form-control" name="date" id="date" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="category">Category</label>
+                                                    <select name="category" id="category" class="form-control custom-select" required>
+                                                        <option value="">Select Category</option>
+                                                        <option value="Customer Payment">Customer Payment</option>
+                                                        <option value="Store Payment">Store Payment</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cash">Cash</label>
+                                                    <input type="number" id="cash" class="form-control" step="0.01" name="cash" min="0" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pos">POS</label>
+                                                    <input type="number" class="form-control" step="0.01" name="pos" id="pos" min="0" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="amount">Amount</label>
+                                                    <input type="number" class="form-control" step="0.01" name="amount" id="amount" min="0" required>
+                                                </div>
+                                                <input type="submit" value="Add" class="btn btn-outline-danger">
+                                            </form>
+                                        </div>
+                                        <div id="incomeTable">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table id="table1">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Date</th>
+                                                                <th scope="col">Category</th>
+                                                                <th scope="col">Cash</th>
+                                                                <th scope="col">POS</th>
+                                                                <th scope="col">Total</th>
+                                                                <th scope="col">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var income in Model)
+                                                            {
+                                                                <tr>
+                                                                    <th><input type="text" value="@income.id" id="row_id_@income.id" class="elementz" style="width:8px" readonly></th>
+                                                                    <td><input type="text" value="@income.date" id="row_date_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="text" value="@income.category" id="row_category_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="text" value="@income.cash" id="row_cash_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="text" value="@income.pos" id="row_pos_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="text" value="@income.total" id="row_total_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="button" class="btn btn-outline-success" value="Edit" onclick="editData(@income.id)" id="row_edit_@income.id">
+                                                                        <input type="button" class="btn btn-outline-danger" value="Delete" id="row_delete_@income.id" onclick="deleteIncome(@income.id)" ></td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<div id="popupEdit" class="modal">
+
+    <div class="modal-content">
+        <span class="close" >&times;</span>
+        <div class="col-md-12">
+            <form id="incomeFormEdit">
+                <input type="hidden" id="edit_id">
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" class="form-control" name="date" id="date_edit" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" id="category_edit" class="form-control custom-select" required>
+                        <option value="">Select Category</option>
+                        <option value="Customer Payment">Customer Payment</option>
+                        <option value="Store Payment">Store Payment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cash">Cash</label>
+                    <input type="number" id="cash_edit" class="form-control" step="0.01" name="cash" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="pos">POS</label>
+                    <input type="number" class="form-control" step="0.01" name="pos" id="pos_edit" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" class="form-control" step="0.01" name="amount" id="amount_edit" min="0" required>
+                </div>
+                <input type="submit" value="Edit" class="btn btn-outline-success">
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    var popupEdit = document.getElementById("popupEdit");
+
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+        popupEdit.style.display = "none";
+    }
+
+</script>
+<script>
+    $(document).ready(function () {
+
+        var dataTable = $('#table1').DataTable({});
+
+        $("#incomeForm").validate({
+            errorClass: "my-error-class",
+            validClass: "my-valid-class",
+            rules: {
+                date: "required",
+                category: "required",
+                cash: {
+                    number: true,
+                    required:true
+                },
+                pos: {
+                    number: true,
+                    required:true
+                },
+                amount: {
+                    number: true,
+                    required:true
+                }
+            },
+            messages: {
+                date: "Date Required!",
+                category: "Please Select Category!",
+                cash: {
+                    number: "Please enter only digits!",
+                    required: "Cash required"
+                },
+                pos: {
+                    number: "Please enter only digits!",
+                    required: "POS required"
+                },
+                amount: {
+                    number: "Please enter only digits!",
+                    required: "Amount required"
+                }
+            },
+            submitHandler: function () {
+                var request = {
+                    'date' : $('#date').val(),
+                    'category' : $('#category').val(),
+                    'cash': $('#cash').val(),
+                    'pos' : $('#pos').val(),
+                    'amount' : $('#amount').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Finance/InsertData",
+                    data: request,
+                    success: function(data){
+                        $('#date').val("");
+                        $('#category').val("");
+                        $('#cash').val("");
+                        $('#pos').val("");
+                        $('#amount').val("");
+                        if (data = "success") {
+                            swal({title: "Success", text: "Income Added Successful!", type: 
+                            "success"}).then(function(){ 
+                               location.reload();
+                               }
+                            );
+                        } else if (data = "error") {
+                            swal("Oops", "Something went wrong!", "error");
+                        }
+                    },
+                    failure: function(errMsg) {
+                        swal("Error", "Connection Error!", "error");
+                    }
+                });
+            }
+        });
+
+        $("#incomeFormEdit").validate({
+            errorClass: "my-error-class",
+            validClass: "my-valid-class",
+            rules: {
+                date_edit: "required",
+                category_edit: "required",
+                cash_edit: {
+                    number: true,
+                    required:true
+                },
+                pos_edit: {
+                    number: true,
+                    required:true
+                },
+                amount_edit: {
+                    number: true,
+                    required:true
+                }
+            },
+            messages: {
+                date_edit: "Date Required!",
+                category_edit: "Please Select Category!",
+                cash_edit: {
+                    number: "Please enter only digits!",
+                    required: "Cash required"
+                },
+                pos_edit: {
+                    number: "Please enter only digits!",
+                    required: "POS required"
+                },
+                amount_edit: {
+                    number: "Please enter only digits!",
+                    required: "Amount required"
+                }
+            },
+            submitHandler: function () {
+                var request = {
+                    'id' : $('#edit_id').val(),
+                    'date' : $('#date_edit').val(),
+                    'category' : $('#category_edit').val(),
+                    'cash': $('#cash_edit').val(),
+                    'pos' : $('#pos_edit').val(),
+                    'amount' : $('#amount_edit').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Finance/editIncome",
+                    data: request,
+                    success: function (data) {
+                        $('#edit_id').val("");
+                        $('#date_edit').val("");
+                        $('#category_edit').val("");
+                        $('#cash_edit').val("");
+                        $('#pos_edit').val("");
+                        $('#amount_edit').val("");
+                        if (data = "success") {
+                            popupEdit.style.display = "none";
+                            swal({title: "Success", text: "Income Edit Successful!", type: 
+                            "success"}).then(function(){ 
+                               location.reload();
+                               }
+                            );
+                        } else if (data = "error") {
+                            swal("Oops", "Something went wrong!", "error");
+                        }
+                    },
+                    failure: function(errMsg) {
+                        swal("Error", "Connection Error!", "error");
+                    }
+                });
+            }
+        });
+
+        $("#incomeForm").submit(function(e) {
+            e.preventDefault();
+        });
+
+        $("#incomeFormEdit").submit(function(e) {
+            e.preventDefault();
+        });
+
+    });
+
+    function editData(id) {
+
+        var date = '#row_date_'+id;
+        var category = '#row_category_'+id;
+        var cash = '#row_cash_'+id;
+        var pos = '#row_pos_'+id;
+        var total = '#row_total_'+id;
+
+        popupEdit.style.display = "block";
+
+        $('#date_edit').val($(date).val());
+        $('#category_edit').val($(category).val());
+        $('#cash_edit').val($(cash).val());
+        $('#pos_edit').val($(pos).val());
+        $('#amount_edit').val($(total).val());
+        $('#edit_id').val(id);
+
+    }
+
+    function deleteIncome(id) {
+
+        swal({
+            title: "Are You Sure?",
+            text: "If You Want Delete This!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    var data = {
+                        'id' : id
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "/Finance/incomeDelete",
+                        data: data,
+                        success: function(data){
+                            if (data = "success") {
+                                swal({
+                                    title: "Success", text: "Income Delete Successful!", type:
+                                        "success", animation: true
+                                }).then(function () { 
+                                   location.reload();
+                                   }
+                                );
+                            } else if (data = "error") {
+                                swal("Oops", "Something went wrong!", "error");
+                            }
+                        },
+                        failure: function(errMsg) {
+                            swal("Error", "Connection Error!", "error");
+                        }
+                    });
+                    }
+            });
+
+    }
+</script>

@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Inventory_management.Models.storeproduct>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/store.cshtml";
+}
+
+
+
+<br />
+
+<h2 class="text-danger">Store Inventory</h2>
+
+
+<br />
+
+<div class="col-4" style="float:right">
+    <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
+</div>
+
+
+<a href="@Url.Action("Create")" class="btn btn-success" style="text-decoration:none; color:white;">Create New </a>
+<br /><br />
+
+    <table class="table table-striped">
+        <tr class="Search">
+            <th>
+                ProductID
+            </th>
+
+            <th>
+                Image
+            </th>
+            <th>
+                Description
+            </th>
+
+            <th>
+                Price
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="Search">
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_ID)
+                </td>
+
+                <td>
+                    <img alt="image not found" style="width:120px;height:120px;" src="@Url.Content(item.image)">
+                </td>
+                <td class="col-3">
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+
+                <td class="col-3">
+                    Rs: @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.product_ID }, new { @class = "btn btn-primary", @style = "text-decoration:none;color:white;" })
+
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.product_ID }, new { @class = "btn btn-danger", @style = "text-decoration:none;color:white;" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+
+
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val().toLowerCase();
+                $(".Search").each(function () {
+
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+
+                        $(this).show();
+                    }
+                });
+
+            });
+
+        });
+
+    </script>

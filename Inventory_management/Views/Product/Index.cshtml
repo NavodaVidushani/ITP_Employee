@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Inventory_management.Models.storeproduct>
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/userView/home.cshtml";
+}
+<br />
+
+<div class="container-fluid ">
+    <div class="container-fluid ">
+
+        <div class="form-group ">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></span>
+                <p>
+                    <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-start Search">
+
+        @foreach (var item in Model)
+        {
+
+            <div class='col-md-3 Search'>
+                <div class="card border-dark">
+                    @*<div class='card-header bg-secondary'><h5 class="card-title text-center">Price : Rs.@item.productID</h5></div>*@
+
+                    <div class='card-body align-self-center'>
+                        <img alt="image not found" style="width:200px;height:200px;" src="@Url.Content(item.image)">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="text-center">@item.description</h6>
+
+                    </div>
+                    <div class='card-header bg-dark'>
+                        <div style='float:right;'>
+                            @Html.ActionLink("Add To Cart", "OrderNow", "ShoppingCart", new { id = item.product_ID }, new { @class = "btn btn-danger", @style = "text-decoration:none;color:white;" })
+                        </div>
+
+                        <div style="float:left">
+                            @Html.ActionLink("View", "Details", "Product", new { id = item.product_ID }, new { @class = "btn btn-secondary", @style = "text-decoration:none;color:white;" })
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+
+
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+
+                    $(this).show();
+                }
+            });
+
+        });
+
+    });
+
+</script>
