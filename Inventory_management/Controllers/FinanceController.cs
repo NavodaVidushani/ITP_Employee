@@ -9,8 +9,9 @@ namespace Inventory_management.Controllers
 {
     public class FinanceController : Controller
     {
+        
 
-        DBModel db = new DBModel();
+        DBModels db = new DBModels();
 
         // GET: Finance
         [HttpGet]
@@ -40,6 +41,7 @@ namespace Inventory_management.Controllers
                 income.total = Double.Parse(amount);
 
                 db.incomeInsert(income);
+              
 
                 return Json("success", JsonRequestBehavior.AllowGet);
             }

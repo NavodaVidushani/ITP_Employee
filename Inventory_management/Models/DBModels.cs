@@ -1,4 +1,4 @@
-﻿namespace Inventory_management.Models
+namespace Inventory_management.Models
 {
     using System;
     using System.Data.Entity;
@@ -8,19 +8,19 @@
     using System.Collections.Generic;
     using System.Data.SqlClient;
 
-    public class DBModel : DbContext
+    public class DBModels : DbContext
     {
         MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=inventorymgt;password=password;allowuservariables=True");
 
+       
 
-
-        public DBModel() : base("name=DBModel")
+        public DBModels(): base("name=DBModels")
         {
         }
 
         public List<income> incomeData()
         {
-
+           
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM income", con);
 
             var model = new List<income>();
@@ -44,7 +44,7 @@
 
         public void incomeInsert(income income)
         {
-
+            
             MySqlCommand cmd = new MySqlCommand("INSERT INTO income (date, category, cash, pos, amount) VALUES (@date, @category, @cash, @pos, @total)", con);
             con.Open();
             cmd.Parameters.AddWithValue("@date", income.date);
@@ -60,7 +60,7 @@
 
         public void incomeEdit(income income)
         {
-
+            
 
             MySqlCommand cmd = new MySqlCommand("UPDATE income SET date = @date, category = @category, cash = @cash, pos = @pos, amount = @total WHERE id = @id", con);
             con.Open();
@@ -90,7 +90,7 @@
 
         public List<daily> dailyData()
         {
-
+            
 
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM daily", con);
 
@@ -117,7 +117,7 @@
         {
             con.Open();
             MySqlCommand cmd = new MySqlCommand("delete from daily where id = @id", con);
-
+            
             cmd.Parameters.AddWithValue("@id", daily.id);
 
             cmd.ExecuteNonQuery();
@@ -139,7 +139,7 @@
 
         public void dailyInsert(daily daily)
         {
-
+         
 
             MySqlCommand cmd = new MySqlCommand("INSERT INTO daily (date, category, savings, amount) VALUES (@date, @category, @savings, @amount)", con);
             con.Open();

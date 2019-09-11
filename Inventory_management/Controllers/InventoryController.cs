@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Inventory_management.Models;
 using System.Data.Entity;
+using System.IO;
 
 namespace Inventory_management.Controllers
 {
@@ -42,6 +43,13 @@ namespace Inventory_management.Controllers
         {
             try
             {
+                string fName = Path.GetFileNameWithoutExtension(invent.ImageFile.FileName);
+                string extension = Path.GetExtension(invent.ImageFile.FileName);
+                string imgName = fName + DateTime.Now.ToString("yymmssff") + extension;
+                invent.image = "~/Content/Images/" + imgName;
+                imgName = Path.Combine(Server.MapPath("~/Content/Images/"), imgName);
+                invent.ImageFile.SaveAs(imgName);
+
                 using (inventorymgtEntities invtModel = new inventorymgtEntities())
                 {
                    

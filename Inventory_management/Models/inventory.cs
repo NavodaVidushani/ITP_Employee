@@ -12,6 +12,7 @@ namespace Inventory_management.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web;
 
     public partial class inventory
     {
@@ -37,6 +38,9 @@ namespace Inventory_management.Models
         public virtual supplier supplier1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<storeproduct> storeproducts { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
+
     }
 
     public enum type

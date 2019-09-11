@@ -29,7 +29,7 @@
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link js-scroll-trigger" href="@Url.Action("Verify", "Login")">HOME</a>
+                                        <a class="nav-link js-scroll-trigger" href="@Url.Action("Welcome", "Login")">HOME</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link js-scroll-trigger" href="@Url.Action("Index", "UserSchedule")">SCHEDULE</a>
@@ -64,7 +64,7 @@
 
                                 </ul>
 
-                                <button class="btn btn-outline-danger">@Html.ActionLink("LOGOUT", "LogOut", new { @class = "btn btn-outline-danger", @style = "text-decoration:none;color:white;" })</button>
+                                <button class="btn btn-outline-danger">@Html.ActionLink("Logout", "Login",  new { @class = "btn btn-outline-danger", @style = "text-decoration:none;color:white;" })</button>
 
                             </div>
                         </div>
