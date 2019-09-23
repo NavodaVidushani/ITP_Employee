@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Inventory_management.Models.schedule>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/schedule.cshtml";
+}
+
+    
+        <h2>Schedule Details</h2>
+
+        <div class="col-4" style="float:right">
+            <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
+        </div>
+
+        
+        <a href="@Url.Action("Create")" class="btn btn-success" style="text-decoration:none; color:white;">Create New </a>
+        <br /><br />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Level)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Days)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Morning_Trainer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Evening_Trainer)
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+                
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="Search">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Level)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Morning_Trainer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Evening_Trainer)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary", @style = "text-decoration:none;color:white;" })
+                        
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-dark", @style = "text-decoration:none;color:white;" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger", @style = "text-decoration:none;color:white;" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+@section Scripts{
+
+    
+
+    <script>
+        $(document).ready(function () {
+
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+
+
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val().toLowerCase();
+                $(".Search").each(function () {
+
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+
+                        $(this).show();
+                    }
+                });
+
+            });
+
+        });
+
+
+
+    </script>
+
+    }

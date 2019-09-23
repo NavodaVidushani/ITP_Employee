@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Inventory_management.Models.order>
+
+@using Inventory_management.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/order.cshtml";
+}
+<br />
+<h2 class="text-danger">Customer Order</h2>
+<br />
+<a href="@Url.Action("ExportOrderListing")" class="btn btn-primary" style="float:left">Generate Report</a>
+<table class="table table-secondary">
+    <tr class="bg-dark text-white">
+        <th>
+            Order ID
+        </th>
+        <th>
+            0rder Date
+        </th>
+        <th>
+            Payment Type
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Customer Name
+        </th>
+        <th>
+            Customer Phone
+        </th>
+        <th>
+            Customer Email
+        </th>
+        <th>
+            Customer Address
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerAddress)
+            </td>
+            <td>
+
+                <div style="float:left">
+                    @Html.ActionLink("Details", "Details", "Order", new { id = item.orderID }, new { @class = "btn btn-dark", @style = "text-decoration:none;color:white;" })
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>
+
+

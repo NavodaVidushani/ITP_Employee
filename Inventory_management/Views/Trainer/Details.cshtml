@@ -1,0 +1,51 @@
+﻿@model Inventory_management.Models.trainer
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/payment4.cshtml";
+
+}
+<h2>Details</h2>
+
+<div>
+    <h4>trainer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paymentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paymentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Month)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TrainerID }, null) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

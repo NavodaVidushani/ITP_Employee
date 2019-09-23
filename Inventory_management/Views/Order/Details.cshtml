@@ -1,0 +1,80 @@
+﻿@model Inventory_management.Models.order
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/order.cshtml";
+}
+<br />
+<h2 class="text-danger">Order Details</h2>
+
+<div>
+    <h4>Order ID : @Html.DisplayFor(model => model.orderID)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Order Date :  @Html.DisplayFor(model => model.orderDate)
+        </dt>
+
+        <dt>
+            Payment Type : @Html.DisplayFor(model => model.paymentType)
+        </dt>
+
+        <dt>
+            Status : @Html.DisplayFor(model => model.status)
+        </dt>
+
+        <dt>
+            Customer Name : @Html.DisplayFor(model => model.customerName)
+        </dt>
+
+        <dt>
+            Customer Phone : @Html.DisplayFor(model => model.customerPhone)
+        </dt>
+
+        <dt>
+            Customer Email : @Html.DisplayFor(model => model.customerEmail)
+        </dt>
+
+        <dt>
+            Customer Address : @Html.DisplayFor(model => model.customerAddress)
+        </dt>
+
+    </dl>
+</div>
+
+
+<div class="col-4">
+    <table class="table table-secondary">
+        <tr class="bg-danger text-white">
+            <th>
+                Product ID
+            </th>
+            <th>
+                quantity
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+
+        @foreach (var item in Model.orderdetails)
+        {
+            <tr>
+                <td>
+                    @item.storeproduct.productID
+                </td>
+                <td>
+                    @item.quantity
+                </td>
+                <td>
+                    @item.price
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    <a href="@Url.Action("Back to List", "IndexAdmin")" class="btn btn-primary active" role="button" aria-pressed="true">Back to List</a>
+
+</p>

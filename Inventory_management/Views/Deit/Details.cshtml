@@ -1,0 +1,75 @@
+﻿@model Inventory_management.Models.diet_planing
+
+@{
+    ViewBag.Title = "Details";
+     Layout = "~/Views/Shared/adminView/diet.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>diet_planing</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dietID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dietID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pdf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pdf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bmi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bmi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age_range)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age_range)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.food_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.food_type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

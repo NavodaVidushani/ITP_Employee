@@ -1,0 +1,30 @@
+﻿@model Inventory_management.Models.schedule
+
+@{
+    ViewBag.Title = "User Registration";
+    Layout = "~/Views/Shared/userView/home.cshtml";
+}
+
+
+<div class="container-fluid" style="horizontal-align:central">
+    <h2 class="text-danger">This Schedule is Selected as your current Workout Plan!</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.Image)" width="700" height="500" />
+        </dd>
+
+
+
+    </dl>
+
+    <p>
+        @Html.ActionLink("Download This File", "downloadFile", new { filename = Model.Image }, new { @class = "btn btn-success", @style = "text-decoration:none;color:white;" })|
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+

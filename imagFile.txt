@@ -1,0 +1,12 @@
+ public HttpPostedFileBase ImageFile { get; set; }
+
+
+
+
+  public enum type {
+
+        Accessories,
+        Equipments,
+        Supplements
+
+    }

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Inventory_management.Models.storeproduct>
+@using T3.Models;
+
+@{
+    ViewBag.Title = "Order Success";
+    Layout = "~/Views/Shared/userView/home.cshtml";
+}
+
+
+<div class="jumbotron-fluid">
+    <br /><br /><br /><br /><br /><br /><br />
+    <h4>Your Order Have been placed successfully. Please click here @Html.ActionLink("here", "Index", "Product") to go to home page!</h4>
+    <br /><br /><br /><br /><br /><br />
+</div>
+

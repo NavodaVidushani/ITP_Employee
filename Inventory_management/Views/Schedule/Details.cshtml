@@ -1,0 +1,53 @@
+﻿@model Inventory_management.Models.schedule
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/schedule.cshtml";
+}
+
+<h2></h2>
+
+
+
+<div class="container-fluid" style="horizontal-align:central">
+    <h2 style="color:black">
+        @Html.DisplayFor(model => model.Name)
+        <br /><br />
+    </h2>
+
+
+
+    <div class='col-md-8'>
+        <div class="card border-dark">
+            <div class='card-header bg-secondary'>
+                <h5 class="card-title text-center">@Html.DisplayFor(model => model.Category)</h5>
+
+            </div>
+
+            <div class='card-body align-self-center'>
+                <img alt="image not found" style="width:550px;height:340px;" src="@Url.Content(Model.Image)">
+            </div>
+            <div class="card-header">
+                <h5 class="text-danger">Aboout:@Html.DisplayFor(model => model.Description)</h5>
+                <h6 class="text-danger">Gender: @Html.DisplayFor(model => model.Gender)</h6>
+                <h6 class="text-danger">Level:@Html.DisplayFor(model => model.Level)</h6>
+                <h6 class="text-danger">Days:@Html.DisplayFor(model => model.Days)</h6>
+            </div>
+
+            <div class='card-header bg-secondary'>
+                <h5 class="card-title ">
+                    Morning Trainer:@Html.DisplayFor(model => model.Morning_Trainer)
+
+                </h5>
+                <h5 class="card-title "> Evening Trainer: @Html.DisplayFor(model => model.Evening_Trainer)</h5>
+            </div>
+
+        </div>
+        <br>
+    </div>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary", @style = "text-decoration:none;color:white;" }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</div>

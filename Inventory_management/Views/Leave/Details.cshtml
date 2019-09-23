@@ -1,0 +1,59 @@
+﻿@model Inventory_management.Models.leave
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/adminEmployee3.cshtml";
+
+}
+
+<div>
+    <h4><b>Leave Details</b></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Employee ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empId)
+        </dd>
+
+        <dt>
+            Reason
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reason)
+        </dd>
+
+        <dt>
+            From Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromdate)
+        </dd>
+
+        <dt>
+            To Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.todate)
+        </dd>
+
+        <dt>
+            No of Days
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noofdays)
+        </dd>
+
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.empId }, new { @class = "btn btn-success", @style = "color:white" })
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary", @style = "color:white" })
+</p>

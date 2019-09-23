@@ -1,0 +1,98 @@
+﻿@model Inventory_management.Models.user
+
+@{
+    Layout = null;
+}
+
+<style>
+    label{
+        font-weight:bold;
+     
+    }
+    
+    .header{
+       background-color:#000;
+       color:#fff;
+       padding:10px;
+       text-align:center;
+    }
+    .form {
+        background-color:#e4e4e4;
+    }
+
+</style>
+
+<div class="header">
+    <h2>@Model.fname @Model.lname </h2>
+</div>
+
+<hr />
+
+@using (Html.BeginForm("viewUser", "Search", FormMethod.Post, new { id = Model.regId}))
+{
+    @Html.HiddenFor(a => a.regId)
+    @Html.HiddenFor(a => a.img_path)
+
+    
+
+    <div class="form-group">
+        <label>First Name</label>
+        <p>@Model.fname</p>
+    </div>
+    <div class="form-group">
+        <label>Last Name</label>
+        <p>@Model.lname</p>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <p>@Model.email</p>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <p>@Model.password_</p>
+    </div>
+    <div class="form-group">
+        <label>Age</label>
+        <p>@Model.age</p>
+    </div>
+    <div class="form-group">
+        <label>Gender</label>
+        <p>@Model.gender</p>
+    </div>
+    <div class="form-group">
+        <label>Occupation</label>
+        <p>@Model.ocp</p>
+    </div>
+    <div class="form-group">
+        <label>Weight</label>
+        <p>@Model.weight_</p>
+    </div>
+    <div class="form-group">
+        <label>Height</label>
+        <p>@Model.height</p>
+    </div>
+    <div class="form-group">
+        <label>Contact No</label>
+        <p>@Model.phone</p>
+    </div>
+    <div class="form-group">
+        <label>Address</label>
+        <p>@Model.address</p>
+    </div>
+    <div class="form-group">
+        <label>Shedule</label>
+        <p>@Model.shedule</p>
+    </div>
+    <div class="form-group">
+        <label>Dietary Plan</label>
+        <p>@Model.d_plan</p>
+    </div>
+    <div class="form-group">
+        <label>Payment</label>
+        <p>@Model.pay_type</p>
+    </div>
+
+    <div>
+        <input type="submit" class="btn btn-primary" value="Delete" />
+    </div>
+}

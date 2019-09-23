@@ -1,0 +1,209 @@
+
+.p-main{
+width: 800px;
+margin:30px auto;
+background-color: #ccc;
+
+}
+
+.p-hr{
+    border-style:solid;
+    height:1px;
+    margin-left: -11px;
+    margin-right: -11px;
+    background-color:#2a2a2a;
+}
+
+dl dt{
+
+    display:flex;
+    float:left;
+}
+
+
+dl dd:hover{
+
+    color:#0060c3;
+}
+div.g1 img:hover{
+    border-radius:10%;
+    border:2px solid #3a3a3a;
+}
+
+
+*{
+    box-sizing: border-box;
+}
+
+.un{
+    padding: 10px;
+    font-size: larger;
+}
+
+.g1{
+    width: 25%;
+    float: left;
+    padding: 10px;
+  
+}
+
+.im{
+    border-radius: 10px;
+}
+
+.g2{
+    width: 75%;
+    float:right;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color:#f3f3f3;
+    color:#000;
+
+}
+
+
+.bloc{
+    margin: 10px;
+    height: 50px;
+}
+
+span{
+color:red;
+}
+
+.p-h2{
+background-color: red;
+color: #f1f1f1;
+text-align:center;
+border-radius: 10px 10px 0 0;
+margin: 0px -10px 10px -10px;
+padding: 30px;
+
+}
+
+label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+
+}
+
+.p-form_layout{
+width:800px;
+float: left;
+border-radius: 10px;
+padding: 0px 10px 10px 10px;
+background-color: #2a2a2a;
+color:#f3f3f3;
+
+}
+
+/* Full-width input fields */
+input[type=text],
+input[type=number],
+input[type=date],
+input[type=password],
+input[type=email] ,
+select,
+textarea{
+    float: left;
+    width: 300px;
+    padding: 15px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 5px;
+
+}
+
+input[type=text]:focus, input[type=password]:focus
+input[type=date]:focus,
+input[type=email]:focus ,
+select:focus,
+textarea:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+input[type=text]:hover, input[type=password]:hover
+input[type=date]:hover,
+input[type=email]:hover ,
+select:hover,
+textarea:hover {
+    background-color: #ddd;
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+input[type=file] {
+    display:none;
+}
+
+
+/* Set a style for all buttons */
+.buttn {
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    border: 1px solid #000;
+
+
+}
+
+.buttn:hover {
+    background:#000;
+    border: 1px solid #5a5a5a;
+    color:#fff;
+}
+
+.btn-profile {
+    background-color: red;
+    color: #f3f3f3;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    padding: 8px;
+    margin-top:10px;
+    font-size: small;
+    margin-left: 10px;
+}
+.btn-profile:hover{
+    text-decoration:none;
+    background:#000;
+    color:white;
+    cursor:pointer;
+}
+
+
+/* Float cancel and signup buttons and add an equal width */
+.signupbtn {
+  float: right;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.img-upl{
+    background-color: red;
+    color: #f3f3f3;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    padding: 8px;
+    margin-top:10px;
+    font-size: small;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .signupbtn {
+       width: 100%;
+    }
+}

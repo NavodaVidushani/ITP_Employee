@@ -1,0 +1,84 @@
+﻿@using Inventory_management.Models
+@model Inventory_management.Models.salary
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/adminView/adminEmployee4.cshtml";
+}
+
+
+
+
+<html>
+<head>
+
+</head>
+<body>
+    <br />
+    <h4><b>Salary Management</b></h4>
+    <br />
+    <div class="row">
+        @using (Html.BeginForm("/Index", "Salary", FormMethod.Post))
+        {
+
+            <div class="form-group">
+                <lable for="name"><b>EmpId</b></lable>
+                <input type="text" class="form-control" id="empId" name="empId" value="@Model.empId" />
+            </div>
+
+
+            <div class="form-group">
+                <lable for="name"><b>Basic Salary</b></lable>
+                <input type="text" class="form-control" id="basic" name="basic" value="@Model.basic" />
+            </div>
+            <div class="form-group">
+                <lable for="name"><b>O/T hours</b></lable>
+                <input type="text" class="form-control" id="othours" name="othours" value="@Model.othours" />
+            </div>
+
+
+            <div class="form-group">
+                <lable for="name"><b>O/T Rate</b></lable>
+                <input type="text" class="form-control" id="otrate" name="otrate" value="@Model.otrate" />
+            </div>
+
+            <div class="form-group">
+                <lable for="name"><b>Bonus</b></lable>
+                <input type="text" class="form-control" id="bonus" name="bonus" value="@Model.bonus" />
+            </div>
+            <div class="form-group">
+                <lable for="name"><b>O/T Pay</b></lable>
+                <input type="text" class="form-control" id="otpay" name="otpay" value="@Model.otrate" disabled />
+            </div>
+            <div class="form-group">
+                <lable for="name"><b>Deduction</b></lable>
+                <input type="text" class="form-control" id="deduction" name="deduction" value="@Model.deduction" disabled />
+            </div>
+
+            <div class="form-group">
+                <lable for="name"><b>NetSalary</b></lable>
+                <input type="text" class="form-control" id="netsal" name="netsal" value="@Model.netsal" disabled />
+            </div>
+
+
+
+            <button type="submit" class="btn btn-info" id="add" value="add">Calculate</button>
+
+        }
+
+
+
+    </div>
+
+</body>
+
+
+
+</html>
+
+
+
+
+
+
+

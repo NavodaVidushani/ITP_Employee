@@ -1,0 +1,38 @@
+﻿@model Inventory_management.Models.storeproduct
+
+@{
+    ViewBag.Title = "Details";
+
+        Layout = "~/Views/Shared/userView/home.cshtml";
+ }
+
+<br />
+
+<h2>Details</h2>
+
+<div>
+
+    <div class='col-md-4'>
+        <div class='card'>
+            <div class='card-header bg-secondary'>
+                <h5 class="card-title text-center">@Html.DisplayFor(model => model.product_ID)</h5>
+            </div>
+
+            <div class='card-body align-self-center'>
+                <img alt="image not found" style="width:240px;height:240px;" src="@Url.Content(@Model.image)">
+            </div>
+
+            <div class="card-body">
+                <h6 class="text-center">@Html.DisplayFor(model => model.description)</h6>
+            </div>
+
+            <div class='card-header bg-danger'>
+                <h5 class="card-title text-center text-white">Price : @Html.DisplayFor(model => model.price)</h5>
+            </div>
+        </div>
+        <br>
+    </div>
+
+
+</div>
+<a href="@Url.Action("Index", "Product")" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back to List</a>
