@@ -195,16 +195,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBModels.cs" />
     <Compile Include="Models\diet_planing.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -320,6 +316,7 @@
     <Content Include="Content\image\weight.jpg" />
     <Content Include="Content\image\yoga.jpg" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\sweetalert.min.js" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -629,6 +626,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\assets\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
