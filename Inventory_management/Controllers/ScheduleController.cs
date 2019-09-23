@@ -16,6 +16,8 @@ namespace Inventory_management.Controllers
     public class ScheduleController : Controller
     {
 
+        //new Comment added
+
         //DBMod dbs = new DBMod();
         //public ActionResult New()
         //{
