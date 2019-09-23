@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="inventorymgtModelStoreContainer" CdmEntityContainer="inventorymgtEntities">
+    <EntitySetMapping Name="inventories">
+      <EntityTypeMapping TypeName="inventorymgtModel.inventory">
+        <MappingFragment StoreEntitySet="inventory">
+          <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="purchased_date" ColumnName="purchased_date" />
+          <ScalarProperty Name="supplier" ColumnName="supplier" />
+          <ScalarProperty Name="catergory" ColumnName="catergory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers">
+      <EntityTypeMapping TypeName="inventorymgtModel.supplier">
+        <MappingFragment StoreEntitySet="supplier">
+          <ScalarProperty Name="supplierID" ColumnName="supplierID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="logins">
+      <EntityTypeMapping TypeName="inventorymgtModel.login">
+        <MappingFragment StoreEntitySet="login">
+          <ScalarProperty Name="status_" ColumnName="status_" />
+          <ScalarProperty Name="password_" ColumnName="password_" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="inventorymgtModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="img_path" ColumnName="img_path" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="pay_type" ColumnName="pay_type" />
+          <ScalarProperty Name="d_plan" ColumnName="d_plan" />
+          <ScalarProperty Name="shedule" ColumnName="shedule" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="height" ColumnName="height" />
+          <ScalarProperty Name="weight_" ColumnName="weight_" />
+          <ScalarProperty Name="ocp" ColumnName="ocp" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="password_" ColumnName="password_" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="regId" ColumnName="regId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="attendances">
+      <EntityTypeMapping TypeName="inventorymgtModel.attendance">
+        <MappingFragment StoreEntitySet="attendance">
+          <ScalarProperty Name="no_of_days" ColumnName="no_of_days" />
+          <ScalarProperty Name="user_" ColumnName="user_" />
+          <ScalarProperty Name="status_" ColumnName="status_" />
+          <ScalarProperty Name="date_" ColumnName="date_" />
+          <ScalarProperty Name="atdno" ColumnName="atdno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dailies">
+      <EntityTypeMapping TypeName="inventorymgtModel.daily">
+        <MappingFragment StoreEntitySet="daily">
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="savings" ColumnName="savings" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="incomes">
+      <EntityTypeMapping TypeName="inventorymgtModel.income">
+        <MappingFragment StoreEntitySet="income">
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="pos" ColumnName="pos" />
+          <ScalarProperty Name="cash" ColumnName="cash" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="inventorymgtModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="customerAddress" ColumnName="customerAddress" />
+          <ScalarProperty Name="customerEmail" ColumnName="customerEmail" />
+          <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+          <ScalarProperty Name="customerName" ColumnName="customerName" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+          <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orderdetails">
+      <EntityTypeMapping TypeName="inventorymgtModel.orderdetail">
+        <MappingFragment StoreEntitySet="orderdetail">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="product_ID" ColumnName="product_ID" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="storeproducts">
+      <EntityTypeMapping TypeName="inventorymgtModel.storeproduct">
+        <MappingFragment StoreEntitySet="storeproduct">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="titleID" ColumnName="titleID" />
+          <ScalarProperty Name="itemCode" ColumnName="itemCode" />
+          <ScalarProperty Name="product_ID" ColumnName="product_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="titles">
+      <EntityTypeMapping TypeName="inventorymgtModel.title">
+        <MappingFragment StoreEntitySet="title">
+          <ScalarProperty Name="titlename" ColumnName="titlename" />
+          <ScalarProperty Name="titleID" ColumnName="titleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="attendance_emp">
+      <EntityTypeMapping TypeName="inventorymgtModel.attendance_emp">
+        <MappingFragment StoreEntitySet="attendance_emp">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="empId" ColumnName="empId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="inventorymgtModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="nic" ColumnName="nic" />
+          <ScalarProperty Name="bday" ColumnName="bday" />
+          <ScalarProperty Name="shift" ColumnName="shift" />
+          <ScalarProperty Name="specialisation" ColumnName="specialisation" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="contact" ColumnName="contact" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="empId" ColumnName="empId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="leaves">
+      <EntityTypeMapping TypeName="inventorymgtModel.leave">
+        <MappingFragment StoreEntitySet="leave">
+          <ScalarProperty Name="noofdays" ColumnName="noofdays" />
+          <ScalarProperty Name="todate" ColumnName="todate" />
+          <ScalarProperty Name="fromdate" ColumnName="fromdate" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="empId" ColumnName="empId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bills">
+      <EntityTypeMapping TypeName="inventorymgtModel.bill">
+        <MappingFragment StoreEntitySet="bill">
+          <ScalarProperty Name="Payment_Date" ColumnName="Payment Date" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="billId" ColumnName="billId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventory_pay">
+      <EntityTypeMapping TypeName="inventorymgtModel.inventory_pay">
+        <MappingFragment StoreEntitySet="inventory_pay">
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="PayementDate" ColumnName="PayementDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="paymentId" ColumnName="paymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="inventorymgtModel.member">
+        <MappingFragment StoreEntitySet="member">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MemberShipValidateDate" ColumnName="MemberShipValidateDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="MemberShip" ColumnName="MemberShip" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trainers">
+      <EntityTypeMapping TypeName="inventorymgtModel.trainer">
+        <MappingFragment StoreEntitySet="trainer">
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="schedules">
+      <EntityTypeMapping TypeName="inventorymgtModel.schedule">
+        <MappingFragment StoreEntitySet="schedule">
+          <ScalarProperty Name="Evening_Trainer" ColumnName="Evening_Trainer" />
+          <ScalarProperty Name="Morning_Trainer" ColumnName="Morning_Trainer" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Days" ColumnName="Days" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="diet_planing">
+      <EntityTypeMapping TypeName="inventorymgtModel.diet_planing">
+        <MappingFragment StoreEntitySet="diet_planing">
+          <ScalarProperty Name="food_type" ColumnName="food_type" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="age_range" ColumnName="age_range" />
+          <ScalarProperty Name="bmi" ColumnName="bmi" />
+          <ScalarProperty Name="pdf" ColumnName="pdf" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="dietID" ColumnName="dietID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

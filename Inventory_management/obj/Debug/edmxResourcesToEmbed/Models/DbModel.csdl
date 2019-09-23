@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="inventorymgtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="inventory">
+    <Key>
+      <PropertyRef Name="itemCode" />
+    </Key>
+    <Property Name="itemCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="purchased_date" Type="DateTime" />
+    <Property Name="supplier" Type="Int32" Nullable="false" />
+    <Property Name="catergory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="supplier1" Relationship="Self.sup_ID" FromRole="inventory" ToRole="supplier" />
+    <NavigationProperty Name="storeproducts" Relationship="inventorymgtModel.fk_ItemCode" FromRole="inventory" ToRole="storeproduct" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="supplierID" />
+    </Key>
+    <Property Name="supplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="phone_number" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="inventories" Relationship="Self.sup_ID" FromRole="supplier" ToRole="inventory" />
+  </EntityType>
+  <Association Name="sup_ID">
+    <End Role="supplier" Type="Self.supplier" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="supplierID" />
+      </Principal>
+      <Dependent Role="inventory">
+        <PropertyRef Name="supplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="inventorymgtEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="inventories" EntityType="Self.inventory" />
+    <EntitySet Name="suppliers" EntityType="Self.supplier" />
+    <AssociationSet Name="sup_ID" Association="Self.sup_ID">
+      <End Role="supplier" EntitySet="suppliers" />
+      <End Role="inventory" EntitySet="inventories" />
+    </AssociationSet>
+    <EntitySet Name="logins" EntityType="inventorymgtModel.login" />
+    <EntitySet Name="users" EntityType="inventorymgtModel.user" />
+    <EntitySet Name="attendances" EntityType="inventorymgtModel.attendance" />
+    <EntitySet Name="dailies" EntityType="inventorymgtModel.daily" />
+    <EntitySet Name="incomes" EntityType="inventorymgtModel.income" />
+    <EntitySet Name="orders" EntityType="inventorymgtModel.order" />
+    <EntitySet Name="orderdetails" EntityType="inventorymgtModel.orderdetail" />
+    <EntitySet Name="storeproducts" EntityType="inventorymgtModel.storeproduct" />
+    <EntitySet Name="titles" EntityType="inventorymgtModel.title" />
+    <AssociationSet Name="fk_ItemCode" Association="inventorymgtModel.fk_ItemCode">
+      <End Role="inventory" EntitySet="inventories" />
+      <End Role="storeproduct" EntitySet="storeproducts" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ord" Association="inventorymgtModel.fk_ord">
+      <End Role="order" EntitySet="orders" />
+      <End Role="orderdetail" EntitySet="orderdetails" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pdt" Association="inventorymgtModel.fk_pdt">
+      <End Role="storeproduct" EntitySet="storeproducts" />
+      <End Role="orderdetail" EntitySet="orderdetails" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Title" Association="inventorymgtModel.fk_Title">
+      <End Role="title" EntitySet="titles" />
+      <End Role="storeproduct" EntitySet="storeproducts" />
+    </AssociationSet>
+    <EntitySet Name="attendance_emp" EntityType="inventorymgtModel.attendance_emp" />
+    <EntitySet Name="employees" EntityType="inventorymgtModel.employee" />
+    <EntitySet Name="leaves" EntityType="inventorymgtModel.leave" />
+    <EntitySet Name="bills" EntityType="inventorymgtModel.bill" />
+    <EntitySet Name="inventory_pay" EntityType="inventorymgtModel.inventory_pay" />
+    <EntitySet Name="members" EntityType="inventorymgtModel.member" />
+    <EntitySet Name="trainers" EntityType="inventorymgtModel.trainer" />
+    <EntitySet Name="schedules" EntityType="inventorymgtModel.schedule" />
+    <EntitySet Name="diet_planing" EntityType="inventorymgtModel.diet_planing" />
+  </EntityContainer>
+  <EntityType Name="login">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="password_" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="status_" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="regId" />
+    </Key>
+    <Property Name="regId" Type="Int32" Nullable="false" />
+    <Property Name="fname" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="lname" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="password_" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="ocp" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="weight_" Type="Int32" />
+    <Property Name="height" Type="Double" />
+    <Property Name="phone" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="shedule" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="d_plan" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="pay_type" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="gender" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="img_path" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="attendance">
+    <Key>
+      <PropertyRef Name="atdno" />
+    </Key>
+    <Property Name="atdno" Type="Int32" Nullable="false" />
+    <Property Name="date_" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="status_" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="user_" Type="Int32" />
+    <Property Name="no_of_days" Type="Int32" />
+  </EntityType>
+  <EntityType Name="daily">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="category" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="savings" Type="Double" />
+    <Property Name="amount" Type="Double" />
+  </EntityType>
+  <EntityType Name="income">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="category" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="cash" Type="Double" />
+    <Property Name="pos" Type="Double" />
+    <Property Name="amount" Type="Double" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderDate" Type="DateTime" />
+    <Property Name="paymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="customerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="customerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="customerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="customerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="orderdetails" Relationship="inventorymgtModel.fk_ord" FromRole="order" ToRole="orderdetail" />
+  </EntityType>
+  <EntityType Name="orderdetail">
+    <Key>
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="product_ID" />
+    </Key>
+    <Property Name="orderID" Type="Int32" Nullable="false" />
+    <Property Name="product_ID" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="price" Type="Single" />
+    <NavigationProperty Name="order" Relationship="inventorymgtModel.fk_ord" FromRole="orderdetail" ToRole="order" />
+    <NavigationProperty Name="storeproduct" Relationship="inventorymgtModel.fk_pdt" FromRole="orderdetail" ToRole="storeproduct" />
+  </EntityType>
+  <EntityType Name="storeproduct">
+    <Key>
+      <PropertyRef Name="product_ID" />
+    </Key>
+    <Property Name="product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="itemCode" Type="Int32" Nullable="false" />
+    <Property Name="titleID" Type="Int32" Nullable="false" />
+    <Property Name="product_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="price" Type="Single" />
+    <NavigationProperty Name="inventory" Relationship="inventorymgtModel.fk_ItemCode" FromRole="storeproduct" ToRole="inventory" />
+    <NavigationProperty Name="orderdetails" Relationship="inventorymgtModel.fk_pdt" FromRole="storeproduct" ToRole="orderdetail" />
+    <NavigationProperty Name="title" Relationship="inventorymgtModel.fk_Title" FromRole="storeproduct" ToRole="title" />
+  </EntityType>
+  <EntityType Name="title">
+    <Key>
+      <PropertyRef Name="titleID" />
+    </Key>
+    <Property Name="titleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="titlename" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="storeproducts" Relationship="inventorymgtModel.fk_Title" FromRole="title" ToRole="storeproduct" />
+  </EntityType>
+  <Association Name="fk_ItemCode">
+    <End Type="inventorymgtModel.inventory" Role="inventory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="inventorymgtModel.storeproduct" Role="storeproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="inventory">
+        <PropertyRef Name="itemCode" />
+      </Principal>
+      <Dependent Role="storeproduct">
+        <PropertyRef Name="itemCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ord">
+    <End Type="inventorymgtModel.order" Role="order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="inventorymgtModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="orderID" />
+      </Principal>
+      <Dependent Role="orderdetail">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pdt">
+    <End Type="inventorymgtModel.storeproduct" Role="storeproduct" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="inventorymgtModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="storeproduct">
+        <PropertyRef Name="product_ID" />
+      </Principal>
+      <Dependent Role="orderdetail">
+        <PropertyRef Name="product_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Title">
+    <End Type="inventorymgtModel.title" Role="title" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="inventorymgtModel.storeproduct" Role="storeproduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="title">
+        <PropertyRef Name="titleID" />
+      </Principal>
+      <Dependent Role="storeproduct">
+        <PropertyRef Name="titleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="attendance_emp">
+    <Key>
+      <PropertyRef Name="empId" />
+    </Key>
+    <Property Name="empId" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="empId" />
+    </Key>
+    <Property Name="empId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="gender" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="contact" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="specialisation" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="shift" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="bday" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="nic" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="leave">
+    <Key>
+      <PropertyRef Name="empId" />
+    </Key>
+    <Property Name="empId" Type="Int32" Nullable="false" />
+    <Property Name="reason" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="fromdate" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="todate" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="noofdays" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="bill">
+    <Key>
+      <PropertyRef Name="billId" />
+    </Key>
+    <Property Name="billId" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="Payment_Date" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="inventory_pay">
+    <Key>
+      <PropertyRef Name="paymentId" />
+    </Key>
+    <Property Name="paymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Decimal" />
+    <Property Name="PayementDate" Type="DateTime" />
+    <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MemberShip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="MemberShipValidateDate" Type="DateTime" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="trainer">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TrainerID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Decimal" />
+    <Property Name="paymentDate" Type="DateTime" />
+    <Property Name="Month" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="schedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Level" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Days" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Morning_Trainer" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="Evening_Trainer" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="diet_planing">
+    <Key>
+      <PropertyRef Name="dietID" />
+    </Key>
+    <Property Name="dietID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="pdf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="bmi" Type="Single" />
+    <Property Name="age_range" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="category" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="food_type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
