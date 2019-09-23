@@ -20,7 +20,7 @@ namespace Login.Controllers
         }
 
         [HttpPost]
-        public ActionResult Welcome(Inventory_management.Models.login userModel)
+        public ActionResult Verify(Inventory_management.Models.login userModel)
         {
 
             using (inventorymgtEntities dbModel = new inventorymgtEntities())

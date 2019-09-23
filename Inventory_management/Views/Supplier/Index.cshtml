@@ -52,9 +52,9 @@
                 @Html.DisplayFor(modelItem => item.phone_number)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.supplierID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.supplierID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.supplierID })
+                @Html.ActionLink("Edit", "Edit", new { id = item.supplierID }, new { @class = "btn btn-success", @style = "color:white" }) 
+                @Html.ActionLink("Details", "Details", new { id = item.supplierID }, new { @class = "btn btn-dark", @style = "color:white" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.supplierID }, new { @class = "btn btn-danger", @style = "color:white" })
             </td>
         </tr>
     }

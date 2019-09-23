@@ -1,6 +1,4 @@
-﻿@model IEnumerable<Inventory_management.Models.income>
-
-@{
+﻿@{
     Layout = "~/Views/Shared/adminView/finance2.cshtml";
 }
 
@@ -63,43 +61,43 @@
     }
     /* The Modal (background) */
     .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
 
     /* Modal Content */
     .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 60%;
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
     }
 
     /* The Close Button */
     .close {
-        color: #aaaaaa;
-        float: right;
-        margin-left: 95%;
-        font-size: 28px;
-        font-weight: bold;
+      color: #aaaaaa;
+      float: right;
+      margin-left: 95%;
+      font-size: 28px;
+      font-weight: bold;
     }
 
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
 </style>
 
 </head>
@@ -166,119 +164,118 @@
                 </ul>
             </div>
         </div>*@
-    <div class="main-panel">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg " color-on-scroll="500">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#pablo">Finance Managment</a>
-                <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar burger-lines"></span>
-                    <span class="navbar-toggler-bar burger-lines"></span>
-                    <span class="navbar-toggler-bar burger-lines"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                    <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span class="d-lg-none">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="income" class="nav-link" style="color: rgba(252, 3, 3 , 0.7)">
-                                <span class="d-lg-block">Income Details</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="daily" class="nav-link">
-                                <span class="d-lg-block">Daily Expenses</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <span class="d-lg-block">Statement</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#pablo">
-                                <span class="no-icon">Log out</span>
-                            </a>
-                        </li>
-                    </ul>
+        <div class="main-panel">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#pablo">Finance Managment</a>
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <span class="d-lg-none">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="income" class="nav-link" style="color: rgba(252, 3, 3 , 0.7)">
+                                    <span class="d-lg-block">Income Details</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="daily" class="nav-link">
+                                    <span class="d-lg-block">Daily Expenses</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <span class="d-lg-block">Statement</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#pablo">
+                                    <span class="no-icon">Log out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-        <!-- End Navbar -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card ">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <form id="incomeForm">
-                                            <div class="form-group">
-                                                <label for="date">Date</label>
-                                                <input type="date" class="form-control" name="date" id="date" placeholder="" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="category">Category</label>
-                                                <select name="category" id="category" class="form-control custom-select" required>
-                                                    <option value="">Select Category</option>
-                                                    <option value="Customer Payment">Customer Payment</option>
-                                                    <option value="Store Payment">Store Payment</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cash">Cash</label>
-                                                <input type="number" id="cash" class="form-control" step="0.01" name="cash" min="0" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="pos">POS</label>
-                                                <input type="number" class="form-control" step="0.01" name="pos" id="pos" min="0" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="amount">Amount</label>
-                                                <input type="number" class="form-control" step="0.01" name="amount" id="amount" min="0" required>
-                                            </div>
-                                            <input type="submit" value="Add" class="btn btn-outline-danger">
-                                        </form>
-                                    </div>
-                                    <div id="incomeTable">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <table id="table1">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">ID</th>
-                                                            <th scope="col">Date</th>
-                                                            <th scope="col">Category</th>
-                                                            <th scope="col">Cash</th>
-                                                            <th scope="col">POS</th>
-                                                            <th scope="col">Total</th>
-                                                            <th scope="col">Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach (var income in Model)
-                                                        {
+            </nav>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card ">
+                                <div class="card-body ">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <form id="incomeForm">
+                                                <div class="form-group">
+                                                    <label for="date">Date</label>
+                                                    <input type="date" class="form-control" name="date" id="date" placeholder="" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="category">Category</label>
+                                                    <select name="category" id="category" class="form-control custom-select" required>
+                                                        <option value="">Select Category</option>
+                                                        <option value="Customer Payment">Customer Payment</option>
+                                                        <option value="Store Payment">Store Payment</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cash">Cash</label>
+                                                    <input type="number" id="cash" class="form-control" step="0.01" name="cash" min="0" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="pos">POS</label>
+                                                    <input type="number" class="form-control" step="0.01" name="pos" id="pos" min="0" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="amount">Amount</label>
+                                                    <input type="number" class="form-control" step="0.01" name="amount" id="amount" min="0" required>
+                                                </div>
+                                                <input type="submit" value="Add" class="btn btn-outline-danger">
+                                            </form>
+                                        </div>
+                                        <div id="incomeTable">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table id="table1">
+                                                        <thead>
                                                             <tr>
-                                                                <th><input type="text" value="@income.id" id="row_id_@income.id" class="elementz" style="width:8px" readonly></th>
-                                                                <td><input type="text" value="@income.date" id="row_date_@income.id" class="elementz" style="width:100px" readonly></td>
-                                                                <td><input type="text" value="@income.category" id="row_category_@income.id" class="elementz" style="width:100px" readonly></td>
-                                                                <td><input type="text" value="@income.cash" id="row_cash_@income.id" class="elementz" style="width:100px" readonly></td>
-                                                                <td><input type="text" value="@income.pos" id="row_pos_@income.id" class="elementz" style="width:100px" readonly></td>
-                                                                <td><input type="text" value="@income.total" id="row_total_@income.id" class="elementz" style="width:100px" readonly></td>
-                                                                <td>
-                                                                    <input type="button" class="btn btn-outline-success" value="Edit" onclick="editData(@income.id)" id="row_edit_@income.id">
-                                                                    <input type="button" class="btn btn-outline-danger" value="Delete" id="row_delete_@income.id" onclick="deleteIncome(@income.id)">
-                                                                </td>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Date</th>
+                                                                <th scope="col">Category</th>
+                                                                <th scope="col">Cash</th>
+                                                                <th scope="col">POS</th>
+                                                                <th scope="col">Total</th>
+                                                                <th scope="col">Action</th>
                                                             </tr>
-                                                        }
-                                                    </tbody>
-                                                </table>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var income in Model)
+                                                            {
+                                                                <tr>
+                                                                    <th><input type="text" value="@income.id" id="row_id_@income.id" class="elementz" style="width:8px" readonly></th>
+                                                                    <td><input type="text" value="@income.date" id="row_date_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="text" value="@income.category" id="row_category_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="text" value="@income.cash" id="row_cash_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="text" value="@income.pos" id="row_pos_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="text" value="@income.total" id="row_total_@income.id" class="elementz" style="width:100px" readonly></td>
+                                                                    <td><input type="button" class="btn btn-outline-success" value="Edit" onclick="editData(@income.id)" id="row_edit_@income.id">
+                                                                        <input type="button" class="btn btn-outline-danger" value="Delete" id="row_delete_@income.id" onclick="deleteIncome(@income.id)" ></td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -290,14 +287,12 @@
             </div>
         </div>
     </div>
-    </div>
 </body>
 </html>
 <div id="popupEdit" class="modal">
 
     <div class="modal-content">
-        x
-        <span class="close">&times;</span>
+        <span class="close" >&times;</span>
         <div class="col-md-12">
             <form id="incomeFormEdit">
                 <input type="hidden" id="edit_id">
@@ -354,15 +349,15 @@
                 category: "required",
                 cash: {
                     number: true,
-                    required: true
+                    required:true
                 },
                 pos: {
                     number: true,
-                    required: true
+                    required:true
                 },
                 amount: {
                     number: true,
-                    required: true
+                    required:true
                 }
             },
             messages: {
@@ -383,35 +378,33 @@
             },
             submitHandler: function () {
                 var request = {
-                    'date': $('#date').val(),
-                    'category': $('#category').val(),
+                    'date' : $('#date').val(),
+                    'category' : $('#category').val(),
                     'cash': $('#cash').val(),
-                    'pos': $('#pos').val(),
-                    'amount': $('#amount').val()
+                    'pos' : $('#pos').val(),
+                    'amount' : $('#amount').val()
                 };
                 $.ajax({
                     type: "POST",
                     url: "/Finance/InsertData",
                     data: request,
-                    success: function (data) {
+                    success: function(data){
                         $('#date').val("");
                         $('#category').val("");
                         $('#cash').val("");
                         $('#pos').val("");
                         $('#amount').val("");
                         if (data = "success") {
-                            swal({
-                                title: "Success", text: "Income Added Successful!", type:
-                                    "success"
-                            }).then(function () {
-                                location.reload();
-                            }
+                            swal({title: "Success", text: "Income Added Successful!", type: 
+                            "success"}).then(function(){ 
+                               location.reload();
+                               }
                             );
                         } else if (data = "error") {
                             swal("Oops", "Something went wrong!", "error");
                         }
                     },
-                    failure: function (errMsg) {
+                    failure: function(errMsg) {
                         swal("Error", "Connection Error!", "error");
                     }
                 });
@@ -426,15 +419,15 @@
                 category_edit: "required",
                 cash_edit: {
                     number: true,
-                    required: true
+                    required:true
                 },
                 pos_edit: {
                     number: true,
-                    required: true
+                    required:true
                 },
                 amount_edit: {
                     number: true,
-                    required: true
+                    required:true
                 }
             },
             messages: {
@@ -455,12 +448,12 @@
             },
             submitHandler: function () {
                 var request = {
-                    'id': $('#edit_id').val(),
-                    'date': $('#date_edit').val(),
-                    'category': $('#category_edit').val(),
+                    'id' : $('#edit_id').val(),
+                    'date' : $('#date_edit').val(),
+                    'category' : $('#category_edit').val(),
                     'cash': $('#cash_edit').val(),
-                    'pos': $('#pos_edit').val(),
-                    'amount': $('#amount_edit').val()
+                    'pos' : $('#pos_edit').val(),
+                    'amount' : $('#amount_edit').val()
                 };
                 $.ajax({
                     type: "POST",
@@ -475,29 +468,27 @@
                         $('#amount_edit').val("");
                         if (data = "success") {
                             popupEdit.style.display = "none";
-                            swal({
-                                title: "Success", text: "Income Edit Successful!", type:
-                                    "success"
-                            }).then(function () {
-                                location.reload();
-                            }
+                            swal({title: "Success", text: "Income Edit Successful!", type: 
+                            "success"}).then(function(){ 
+                               location.reload();
+                               }
                             );
                         } else if (data = "error") {
                             swal("Oops", "Something went wrong!", "error");
                         }
                     },
-                    failure: function (errMsg) {
+                    failure: function(errMsg) {
                         swal("Error", "Connection Error!", "error");
                     }
                 });
             }
         });
 
-        $("#incomeForm").submit(function (e) {
+        $("#incomeForm").submit(function(e) {
             e.preventDefault();
         });
 
-        $("#incomeFormEdit").submit(function (e) {
+        $("#incomeFormEdit").submit(function(e) {
             e.preventDefault();
         });
 
@@ -505,11 +496,11 @@
 
     function editData(id) {
 
-        var date = '#row_date_' + id;
-        var category = '#row_category_' + id;
-        var cash = '#row_cash_' + id;
-        var pos = '#row_pos_' + id;
-        var total = '#row_total_' + id;
+        var date = '#row_date_'+id;
+        var category = '#row_category_'+id;
+        var cash = '#row_cash_'+id;
+        var pos = '#row_pos_'+id;
+        var total = '#row_total_'+id;
 
         popupEdit.style.display = "block";
 
@@ -534,30 +525,30 @@
             .then((willDelete) => {
                 if (willDelete) {
                     var data = {
-                        'id': id
+                        'id' : id
                     };
                     $.ajax({
                         type: "POST",
                         url: "/Finance/incomeDelete",
                         data: data,
-                        success: function (data) {
+                        success: function(data){
                             if (data = "success") {
                                 swal({
                                     title: "Success", text: "Income Delete Successful!", type:
                                         "success", animation: true
-                                }).then(function () {
-                                    location.reload();
-                                }
+                                }).then(function () { 
+                                   location.reload();
+                                   }
                                 );
                             } else if (data = "error") {
                                 swal("Oops", "Something went wrong!", "error");
                             }
                         },
-                        failure: function (errMsg) {
+                        failure: function(errMsg) {
                             swal("Error", "Connection Error!", "error");
                         }
                     });
-                }
+                    }
             });
 
     }

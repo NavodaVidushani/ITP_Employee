@@ -1,4 +1,5 @@
 ﻿using Inventory_management.Models;
+using Inventory_management.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,10 +10,13 @@ using System.Web;
 using System.Web.Mvc;
 
 
+
 namespace Inventory_management.Controllers
 {
     public class ScheduleController : Controller
     {
+
+        //new Comment added
 
         //DBMod dbs = new DBMod();
         //public ActionResult New()
