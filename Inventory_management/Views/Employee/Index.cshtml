@@ -9,107 +9,107 @@
 <h4><center><b>User Management</b></center></h4>
 
 <div>
-    
-        
-        <div class="col-4" style="float:right">
-            <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
-        </div>
 
 
-        <a href="@Url.Action("Create")" class="btn btn-success">Create New </a>
-        <br /><br />
-        <table class="table">
-            <tr>
-                <th>
-                    Employee ID
-                </th>
-                <th>
-                    Name
-                </th>
+    <div class="col-4" style="float:right">
+        <input type="text" placeholder="Search" id="Search" aria-label="Search" class="form-control" />
+    </div>
 
-                <th>
-                    Contact
-                </th>
 
-                <th>
-                    Specialisation
-                </th>
-                <th>
-                    Shift
-                </th>
+    <a href="@Url.Action("Create")" class="btn btn-success">Create New </a>
+    <br /><br />
+    <table class="table">
+        <tr>
+            <th>
+                Employee ID
+            </th>
+            <th>
+                Name
+            </th>
 
-                <th>
-                    Email
-                </th>
-                <th></th>
+            <th>
+                Contact
+            </th>
+
+            <th>
+                Specialisation
+            </th>
+            <th>
+                Shift
+            </th>
+
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="Search">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.empId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.contact)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.specialisation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shift)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.empId }, new { @class = "btn btn-success", @style = "color:white" })
+                    @Html.ActionLink("Details", "Details", new { id = item.empId }, new { @class = "btn btn-dark", @style = "color:white" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.empId }, new { @class = "btn btn-danger", @style = "color:white" })
+                </td>
             </tr>
+        }
 
-            @foreach (var item in Model)
-            {
-                <tr class="Search">
+    </table>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.empId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
+    <script>
+        $(document).ready(function () {
 
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.contact)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.specialisation)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.shift)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.email)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.empId }, new { @class = "btn btn-success", @style = "color:white" })
-                        @Html.ActionLink("Details", "Details", new { id = item.empId }, new { @class = "btn btn-dark", @style = "color:white" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.empId }, new { @class = "btn btn-danger", @style = "color:white" })
-                    </td>
-                </tr>
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
             }
 
-        </table>
-        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+            $("#Search").keyup(function () {
 
-        <script>
-            $(document).ready(function () {
+                var searchText = $("#Search").val().toLocaleLowerCase();
+                $(".Search").each(function () {
 
-                function Contains(text_one, text_two) {
-                    if (text_one.indexOf(text_two) != -1)
-                        return true;
-                }
+                    if (!Contains($(this).text().toLowerCase(), searchText)) {
 
-                $("#Search").keyup(function () {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
 
-                    var searchText = $("#Search").val().toLocaleLowerCase();
-                    $(".Search").each(function () {
-
-                        if (!Contains($(this).text().toLowerCase(), searchText)) {
-
-                            $(this).hide();
-                        }
-                        else {
-                            $(this).show();
-                        }
-
-                    })
-                });
-
+                })
             });
 
+        });
 
-        </script>
+
+    </script>
 
 
-<!--This is a comment-->
-
+    <!--This is a comment-->
+    <!--This is a comment-->
