@@ -1,4 +1,5 @@
-﻿using Inventory_management.Models;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using Inventory_management.Models;
 using Inventory_management.Models;
 using System;
 using System.Collections.Generic;
@@ -194,6 +195,26 @@ namespace Inventory_management.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        public ActionResult ExportScheduleListing()
+        {
+            using (inventorymgtEntities mv = new inventorymgtEntities())
+            {
+                ReportDocument rd = new ReportDocument();
+                rd.Load(Path.Combine(Server.MapPath("~/Report/Schedule/ScheduleReport.rpt")));
+                rd.SetDataSource(mv.schedules.ToList());
+
+                Response.Buffer = false;
+                Response.ClearContent();
+                Response.ClearHeaders();
+
+                Stream str = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                str.Seek(0, SeekOrigin.Begin);
+
+                string savedFileName = string.Format("ScheduleReport_{0}", DateTime.Now);
+                return File(str, "applicationReport/pdf", savedFileName);
             }
         }
 
